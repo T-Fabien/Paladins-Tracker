@@ -20,8 +20,6 @@ import Tracker from "./pages/Tracker";
 // Redux
 import { store } from "./store";
 import { Provider } from 'react-redux';
-import { SessionLoader } from "./helper/SessionLoader";
-
 
 function App() {
   const router = createBrowserRouter(
