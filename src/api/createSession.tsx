@@ -1,8 +1,7 @@
 export const createSession = async () => {
   // Request
-  return fetch(`/api/createsession`).then((response) => {
+  return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/createsession`).then((response) => {
     try {
-      console.log(response);
       
       // If Server Error
       if (response.status >= 400) {

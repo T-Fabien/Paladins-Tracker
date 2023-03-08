@@ -2,6 +2,7 @@ export const getChampions = async () => {
   // Request
   return fetch(`/api/getchampions`).then((response) => {
     try {
+      console.log(response);
       // If Server Error
       if (response.status >= 400) {
         return response.text().then(() => {
