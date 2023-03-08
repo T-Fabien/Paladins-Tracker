@@ -1,6 +1,6 @@
 export const getChampionCards = async (champions: number) => {
   // Request
-  return fetch(`/api/getchampioncards/:${champions}`).then((response) => {
+  return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/getchampioncards/:${champions}`).then((response) => {
     try {
       // If Server Error
       if (response.status >= 400) {

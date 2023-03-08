@@ -1,6 +1,6 @@
 export const getPlayer = async (player: string) => {
   // Request
-  return fetch(`/api/getplayer/:${player}`).then((response) => {
+  return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/getplayer/:${player}`).then((response) => {
     try {
       // If Server Error
       if (response.status >= 400) {
