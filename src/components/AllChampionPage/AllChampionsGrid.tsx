@@ -11,10 +11,6 @@ type Props = {
 function AllChampionsGrid({data, champions, filter}: Props) {
   let nofilter_champion: Array<any> = [];
 
-  console.log(filter);
-  
-
-
   if (filter == 'Dégâts' || filter == 'Flanc' || filter == 'Tank' || filter == 'Soutien') {
     champions.filter((champion: any) => {
       if (!champion.Roles.includes(filter)) {

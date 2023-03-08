@@ -12,12 +12,8 @@ import { getMatchHistory } from "../api/getMatchHistory";
 import { getChampionRanks } from "../api/getChampionRanks";
 
 // Component
-import MatchPreview from "../components/TrackerPage/MatchPreview";
 import TrackerMainInfo from "../components/TrackerPage/TrackerMainInfo";
 import TrackerSecondaryInfo from "../components/TrackerPage/TrackerSecondaryInfo";
-
-// Data
-import { all_champion_list } from "../data/all_champions";
 
 // Redux
 import { setSession } from "../redux/session";
@@ -26,7 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 // Icons
 import SearchIcon from "@mui/icons-material/Search";
 import DataTable from "../components/TrackerPage/DataTable";
-import champion, { setChampionList } from "../redux/champion";
+import { setChampionList } from "../redux/champion";
 
 
 function Tracker() {
@@ -40,12 +36,6 @@ function Tracker() {
   const [playerChampionRank, setPlayerChampionRank] = useState<any>();
 
   const [inputValue, setInputValue] = useState("");
-
-  // Constants
-  const allChampions = all_champion_list; // Local data
-
-  // Variables
-  var championImg: any;
 
   // Fonction
 
@@ -120,10 +110,11 @@ function Tracker() {
 
   if (
     player !== undefined &&
-    matchList !== undefined &&
     player.ret_msg == null &&
+    matchList !== undefined &&
     matchList.data[0].Champion !== null &&
-    champion.championList !== null
+    champion.championList !== null &&
+    playerChampionRank !== null
   ) {
     return (
       <div className="tracker">
@@ -168,6 +159,7 @@ function Tracker() {
             <input type="submit" id="post" value="Envoyer" />
           </label>
         </form>
+        <p> Erreur </p>
       </div>
     );
   }

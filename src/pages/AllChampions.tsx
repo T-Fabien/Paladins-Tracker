@@ -30,6 +30,7 @@ function AllChampionsPage() {
   useEffect(() => {
     // If no champion data is stopped and there was no error (session created) call the api to get the champions
     if (champion.championList == null && currentSession) {
+      
       try {
         getChampions().then((champion) => {
           SetFilterData(champion.data);
