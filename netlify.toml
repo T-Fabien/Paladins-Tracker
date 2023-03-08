@@ -1,5 +1,4 @@
 [[redirects]]
-  from = "/api/"
-  to = "https://paladins-tracker-backend.netlify.app/.netlify/functions/api/:splat"
+  from = "/*"
+  to = "/"
   status = 200
-  force = true
