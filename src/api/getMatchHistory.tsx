@@ -1,6 +1,6 @@
 export const getMatchHistory = async (playerid: number) => {
     // Request
-    return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/getmatchhistory/:${playerid}`).then((response) => {
+    return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/getmatchhistory/:${playerid}`).then((response) => {
       try {
         // If Server Error
         if (response.status >= 400) {

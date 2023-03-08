@@ -1,7 +1,7 @@
 export const ping = async () => {
   // Request
   try {
-    return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/ping`).then((response) => {
+    return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/ping`).then((response) => {
       try {
         // If Server Error
         if (response.status >= 500) {

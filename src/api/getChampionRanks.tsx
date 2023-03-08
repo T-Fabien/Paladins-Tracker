@@ -1,6 +1,6 @@
 export const getChampionRanks = async (playerId: number) => {
   // Request
-  return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/getchampionranks/:${playerId}`).then((response) => {
+  return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/getchampionranks/:${playerId}`).then((response) => {
     try {
       // If Server Error
       if (response.status >= 400) {

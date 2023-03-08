@@ -1,6 +1,6 @@
 export const createSession = async () => {
   // Request
-  return fetch(`https://paladins-tracker-backend.netlify.app/.netlify/functions/api/createsession`).then((response) => {
+  return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/createsession`).then((response) => {
     try {
       
       // If Server Error
