@@ -1,0 +1,94 @@
+.match__preview__Win{
+    background-color: #249d59;
+}
+.match__preview__Loss{
+    background-color: #b82121;
+}
+
+.tracker__info__match__preview{
+    width: 100%;
+    margin: 10px auto;
+    border: 2px solid darkgray;
+    border-radius: 4px;
+
+    &:nth-child(1){
+        margin-top: 0;
+    }
+    
+    &__header {
+        align-items: center;
+        display: flex;
+        height: 30px;
+        justify-content: space-between;
+        padding: 0 50px;
+        font-weight: 500;
+        & > a {
+            color: $white;
+            text-decoration: none;
+        }
+    }
+    &__body{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 10px 20px;
+        &__champion{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            & > img{
+                width: 128px;
+                height: 128px;
+                margin-bottom: 10px;
+            }
+        }
+       
+        &__stats{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        &__ratio{
+            font-size: 2em;
+        }
+        &__kda{
+            font-size: 1.15em;
+            margin-top: 20px;
+        }
+
+        &__items{
+            display: flex;
+            grid-template-rows: 110px;
+            width: 70%;
+            &__img__2{
+                border-bottom: 3px solid #41efa2;
+            }
+            &__img__3{
+                border-bottom: 3px solid #4cabf0;
+            }
+            &__img__4{
+                border-bottom: 3px solid #e749e1;
+            }
+            &__img__5{
+                border-bottom: 3px solid #feb447;
+            }
+
+            &__title {
+                margin-top: 10px;
+            }
+            & > div {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+                font-size: 0.75em;
+                margin: 0 15px;
+            }
+            & div > img{
+                height: 96px;
+                width: 96px;
+                object-fit: cover;
+            }
+        }
+    }
+}

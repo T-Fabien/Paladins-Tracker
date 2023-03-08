@@ -1,0 +1,88 @@
+.tracker__info__main {
+  border: 1px solid $blue;
+  box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 20px 5% 0 5%;
+  height: 140px;
+  & > div {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 10px;
+  }
+
+  &__avatar > img {
+    width: 128px;
+    height: 128px;
+  }
+  &__account {
+    margin-left: 15px;
+    & > h2 {
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    & > h2 span {
+      font-size: 1rem;
+      font-weight: 100;
+    }
+    & > p {
+      line-height: 20px;
+    }
+  }
+
+  &__winlose__ratio,
+  &__winlose__score {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
+    & > p {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__winlose__ratio {
+    & > p {
+      position: relative;
+      top: 15px;
+      font-size: 1.2rem;
+    }
+    & .radialchart h3 {
+        font-size: 1.25rem;
+    }
+  }
+
+  &__winlose__score {
+    & > p span {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    & > div {
+      margin: 10px 0;
+    }
+
+    &__win {
+      color: lighten(#228b22, 10%);
+    }
+    &__losses {
+      color: $red;
+    }
+  }
+
+  &__rank {
+    align-items: center;
+    & > p {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    & > img {
+      width: 112px;
+    }
+  }
+}

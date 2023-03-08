@@ -1,0 +1,52 @@
+.champion__page__presentation {
+  &__background {
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    object-position: 0 -25px;
+    opacity: 0.7;
+    z-index: 1;
+  }
+  &__text {
+    font-size: 1.25rem;
+    font-weight: 00;
+    line-height: 1.75rem;
+    margin: 10px 0 20px 0;
+    text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8), -3px 0px 7px rgba(0, 0, 0, 0.8),
+      0px 4px 7px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+  }
+  &__description {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    margin-top: -752px;
+    padding-left: 7rem;
+    width: 45%;
+    height: 750px;
+    &__name {
+      font-size: 3.75rem;
+      margin: 100px 0 20px 0;
+      text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8),
+        -3px 0px 7px rgba(0, 0, 0, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
+      z-index: 2;
+    }
+    &__class {
+      display: flex;
+      z-index: 2;
+      &__icon {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        opacity: 1;
+      }
+    }
+  }
+  &__difficulty {
+    align-items: center;
+    display: flex;
+    svg:first-child {
+        margin-left: 10px;
+    }
+  }
+}

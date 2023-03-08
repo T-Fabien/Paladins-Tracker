@@ -1,0 +1,39 @@
+.tracker {
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__search__input {
+        width: 200px;
+        height: 30px;
+        padding-left: 10px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        position: relative;
+        border: none;
+        outline: none;
+      }
+    
+      &__search__icon {
+        color: black;
+        position: relative;
+        left: -30px;
+        top: 7px;
+      }
+  }
+  &__info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px 5% 0 5%;
+
+    &__match{
+      width: 80%;
+
+      border: 1px solid $blue;
+      box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
+      border-radius: 5px
+    }
+  }
+  
+}

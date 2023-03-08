@@ -1,0 +1,12 @@
+.radialchart{
+    & h3{
+        font-size: 1.4rem;
+        position: relative;
+        text-align: center;
+        top: 63px;
+    }
+    & > div {
+        position: relative;
+        top: -7px;
+    }
+}

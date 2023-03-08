@@ -1,0 +1,83 @@
+.champion__page {
+  &__skills {
+    border-radius: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 25px 0;
+    &__button {
+      background-color: transparent;
+      border: none;
+      margin: 10px 30px;
+    }
+  }
+
+  &__cards__legendary {
+    color: white;
+    display: flex;
+    margin: 40px auto 50px auto;
+    width: 90%;
+    & div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    & img {
+      width: 128px;
+    }
+    & h3 {
+      font-size: 1.5rem;
+      margin: 10px 0 20px 0;
+    }
+    & p {
+      text-align: center;
+      width: 80%;
+    }
+  }
+
+  &__cards__common__table {
+    width: 90%;
+    margin: 0 5%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+
+    & thead {
+      & th {
+        align-self: center;
+        border: 1px solid white;
+        padding: 10px 20px;
+      }
+    }
+
+    & tbody {
+      & td {
+        text-align: center;
+        border: 1px solid white;
+        font-size: 1.05rem;
+      }
+      & img {
+        width: 80px;
+      }
+    }
+    &__name {
+      font-weight: 500;
+      color: $lightblue;
+    }
+
+    &__cooldown {
+      & span {
+        position: relative;
+        top: -7px;
+      }
+
+      & svg {
+        font-size: 2rem;
+      }
+    }
+  }
+}

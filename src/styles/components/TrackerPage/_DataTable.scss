@@ -1,0 +1,62 @@
+.tracker__info__datatable
+{
+    box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
+    width: 80%;
+    &__match{
+        height: 50px;
+        & td{
+            height: 50px;
+            padding: 8px 10px ;
+        }
+    }
+    &__result{
+        display: flex;
+        justify-content: center;
+        & p {
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+            padding: 3px 6px;
+        }
+        &__win{
+            background-color: $green;
+        }        
+        &__losses{
+            background-color: $red;
+        }
+    }
+    &__championcell{
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        & > div {
+            margin-left: 5px;
+        }
+        &__img{
+            width: 64px;
+            height: 64px;
+        }
+        &__name{
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+    }
+    &__kdacell{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__kill{
+            color: $lightgreen;
+            font-weight: 600;
+        }
+        &__death{
+            color: $red;
+            font-weight: 600;
+        }
+        &__assist{
+            font-weight: 600;
+        }
+    }
+
+}

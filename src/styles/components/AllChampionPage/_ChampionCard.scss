@@ -1,0 +1,76 @@
+.champion__grid{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 40px;
+    grid-auto-rows: minmax(100px, auto);
+    margin: 2%;
+    &__card{
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 180px;
+        transition-duration: 300ms;
+        &__championimage{
+            width: 100%;
+        }
+        & a{
+            text-decoration: none;
+            height: 100%;
+        }
+        & div{
+            align-items: center;
+            background-color: rgba($darkblue, 0.8);
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            top: -48px;
+            height: 45px;
+            & p{
+                color: white;
+                font-size: 1.3rem;
+                position: absolute;
+                text-decoration: none;
+                text-align: center;
+                width: 120px; 
+                margin-left: 37px;
+                
+            }
+        }
+        &__classicon{
+            width: 32px;
+            margin: 0 5px;
+        }
+    }
+    &__card:hover{
+        transform: scale(1.2);
+        transition-duration: 300ms;
+    }
+}
+
+.card__nofiltered{
+    opacity: 0.4;
+}
+
+@media screen and (max-width: 1600px) {
+    .champion__grid{
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .champion__grid{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+@media screen and (max-width: 1200px) {
+    .champion__grid{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .champion__grid{
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 30px;
+    }
+}

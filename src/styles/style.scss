@@ -1,0 +1,44 @@
+/* Utils */
+@import "./utils/variables";
+
+/* Base */
+@import "./base/reset_css";
+@import "./base/typography";
+
+/* Layout */
+@import "./layout/navbar";
+
+/* Pages */
+@import "./pages/homepage";
+@import "./pages/allChampionPage";
+@import "./pages/championPage";
+@import "./pages/tracker";
+
+/* Components */
+@import "./components/UnderConstruction";
+
+// All Champion Page
+@import "./components/AllChampionPage/ChampionCard";
+
+// Champion Page
+
+@import "./components/ChampionPage/ChampionSkills";
+@import "./components/ChampionPage/ChampionSkillsItem";
+@import "./components/ChampionPage/ChampionSkillsItemDesc";
+@import "./components/ChampionPage/HeroBanner";
+
+// Tracker Page
+@import "./components/TrackerPage/TrackerMainInfo";
+@import "./components/TrackerPage/TrackerSecondaryInfo";
+@import "./components/TrackerPage/matchPreview";
+@import "./components/TrackerPage/DataTable";
+
+// Recharts
+@import "./components/Recharts/RadialCharts";
+
+
+
+html{
+    background-color: $dark;
+    color: white;
+  }
