@@ -3,7 +3,3 @@
   to = "https://paladins-tracker-backend.netlify.app/.netlify/functions/api/:splat"
   status = 200
   force = true
-
-  from = "/*"
-  to = "/"
-  status = 200
