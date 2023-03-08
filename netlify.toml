@@ -2,9 +2,8 @@
   from = "/*"
   to = "/"
   status = 200
-  [[headers]]
-  for = "/*.json"
-    [headers.values]
-      Access-Control-Allow-Origin = "*"
-      Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
-      Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept"
+  
+  [[redirects]]
+  from = "/api/*"
+  to = "https://hirez-backend.netlify.app/.netlify/functions/api/:splat"
+  status = 200
