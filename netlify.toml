@@ -3,7 +3,9 @@
   to = "/"
   status = 200
 
-  [[redirects]]
+[[redirects]]
   from = "/api/*"
   to = "https://hirez-backend.netlify.app/.netlify/functions/api/:splat"
   status = 200
+  force = true
+  headers = {X-From = "Netlify"}
