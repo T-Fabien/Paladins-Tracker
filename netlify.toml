@@ -11,14 +11,14 @@
   headers = {X-From = "Netlify"}
 
   [[redirects]]
-  from = "/api/createsession
+  from = "/api/createsession"
   to = "https://hirez-backend.netlify.app/.netlify/functions/api/createsession"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
 
     [[redirects]]
-  from = "/api/getchampions
+  from = "/api/getchampions"
   to = "https://hirez-backend.netlify.app/.netlify/functions/api/getchampions"
   status = 200
   force = true
