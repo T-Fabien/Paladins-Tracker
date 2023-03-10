@@ -1,6 +1,6 @@
 export const getChampions = async () => {  
   // Request
-  return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/getchampions`).then((response) => {
+  return fetch(`/api/getchampions`).then((response) => {
     try {
       console.log(response);
       // If Server Error

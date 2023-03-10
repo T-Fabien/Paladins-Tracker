@@ -1,7 +1,7 @@
 export const testSession = async () => {
   // Request
   try {
-    return fetch(`https://hirez-backend.netlify.app/.netlify/functions/api/testsession`).then((response) => {
+    return fetch(`/api/testsession`).then((response) => {
       try {
         // If Server Error
         if (response.status >= 500) {

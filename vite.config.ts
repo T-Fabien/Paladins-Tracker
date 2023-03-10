@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://paladins-tracker-backend.netlify.app/.netlify/functions/api',
+        target: 'https://hirez-backend.netlify.app/.netlify/functions/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
