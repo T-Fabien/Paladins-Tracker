@@ -1,6 +1,9 @@
 export const getChampions = async () => {  
   // Request
-  return fetch(`/api/getchampions`).then((response) => {
+  return fetch(`/api/getchampions`,{headers: {
+    Accept: "application/json, text/plain, */*",
+    "Content-type": "application/json; charset=UTF-8"
+  }}).then((response) => {
     try {
       console.log(response);
       // If Server Error

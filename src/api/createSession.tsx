@@ -1,6 +1,9 @@
 export const createSession = async () => {
   // Request
-  return fetch(`/api/createsession`).then((response) => {
+  return fetch(`/api/createsession`,{headers: {
+    Accept: "application/json, text/plain, */*",
+    "Content-type": "application/json; charset=UTF-8"
+  }}).then((response) => {
     try {
       
       // If Server Error
