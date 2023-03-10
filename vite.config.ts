@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': {
+      '/hirez': {
         target: 'https://hirez-backend.netlify.app/.netlify/functions/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
