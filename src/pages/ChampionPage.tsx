@@ -131,6 +131,9 @@ function ChampionPage() {
                     description = championcard.card_description
                       .split("]")[1]
                       .substring(1);
+                } else {
+                  categorie = ""
+                  description = championcard.card_description
                 }
                 return (
                   <div
