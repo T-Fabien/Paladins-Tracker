@@ -1,9 +1,7 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://hirez-backend.netlify.app/.netlify/functions/api/:splat"
+  to = "https://api.paladins.com/paladinsapi.svc/:splat"
   status = 200
-  force = true
-  headers = {X-From = "Netlify"}
 
   [[redirects]]
   from = "/*"
