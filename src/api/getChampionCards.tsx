@@ -1,6 +1,30 @@
-export const getChampionCards = async (champions: number) => {
+import moment from "moment";
+import md5 from "md5";
+
+export const getChampionCards = async (sessionId: any, championId: number) => {
+  const timestamp = moment.utc(Date.now()).format("YYYYMMDDHHmmss");
+
   // Request
-  return fetch(`/api/getchampioncards/:${champions}`).then((response) => {
+  return fetch(
+    "/api" +
+    "/getchampioncardsjson/" +
+    import.meta.env.VITE_DEV_ID +
+    "/" +
+    md5(
+      import.meta.env.VITE_DEV_ID +
+        "getchampioncards" +
+        import.meta.env.VITE_DEV_KEY +
+        timestamp
+    ) +
+    "/" +
+    sessionId +
+    "/" +
+    timestamp +
+    "/" +
+    championId +
+    "/" +
+    "3"
+  ).then((response) => {
     try {
       // If Server Error
       if (response.status >= 400) {

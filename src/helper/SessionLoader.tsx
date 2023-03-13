@@ -1,6 +1,6 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { setSession } from "../redux/session";
+import { setSessionId } from "../redux/session";
 
 // API
 import { ping } from "../api/ping";
@@ -14,12 +14,12 @@ const SessionLoader = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!session.isSessionCreated) {
+    if (session.id == "") {
       try {
         ping().then((ping) => {
           if (ping) {
-            createSession().then(() => {
-              dispatch(setSession({ isSessionCreated: true }));    
+            createSession().then((session) => {
+              dispatch(setSessionId({ id: session.session_id }));
             });
           }
         });
@@ -27,18 +27,16 @@ const SessionLoader = () => {
         console.log(err);
       }
     } else {
-        testSession().then((test) => {
-          if (test.data.includes("Exception - Timestamp")) {
-            dispatch(setSession({ isSessionCreated: false }));
-            createSession().then(() => {
-              dispatch(setSession({ isSessionCreated: true }));
+        testSession(session.id).then((test) => {
+          if (test.data !== undefined) {
+            createSession().then((session) => {
+              dispatch(setSessionId({ id: session.session_id }));
             });
           }
         });
     } 
   }, []);
-
-  return session.isSessionCreated;
+  return session.id
 };
 
 export default SessionLoader;

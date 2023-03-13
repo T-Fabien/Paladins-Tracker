@@ -1,6 +1,47 @@
-export const getPlayer = async (player: string) => {
+import moment from "moment";
+import md5 from "md5";
+
+export const getPlayer = async (sessionId: any, player: string) => {
+  const timestamp = moment.utc(Date.now()).format("YYYYMMDDHHmmss");
+
   // Request
-  return fetch(`/api/getplayer/:${player}`).then((response) => {
+  return fetch(
+    "/api" +
+    "/getplayerjson/" +
+    import.meta.env.VITE_DEV_ID +
+      "/" +
+      md5(
+        import.meta.env.VITE_DEV_ID +
+          "getplayer" +
+          import.meta.env.VITE_DEV_KEY +
+          timestamp
+      ) +
+      "/" +
+      sessionId +
+      "/" +
+      timestamp +
+      "/" +
+      player
+    ).then((response) => {
+      console.log(
+        "/api" +
+        "/getplayerjson/" +
+        import.meta.env.VITE_DEV_ID +
+          "/" +
+          md5(
+            import.meta.env.VITE_DEV_ID +
+              "getplayer" +
+              import.meta.env.VITE_DEV_KEY +
+              moment.utc(Date.now()).format("YYYYMMDDHHmmss")
+          ) +
+          "/" +
+          sessionId +
+          "/" +
+          moment.utc(Date.now()).format("YYYYMMDDHHmmss") +
+          "/" +
+          player
+      );
+      
     try {
       // If Server Error
       if (response.status >= 400) {

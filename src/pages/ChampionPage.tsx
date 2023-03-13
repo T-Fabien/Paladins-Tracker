@@ -22,10 +22,15 @@ import { champions_data } from "../data/champions_data.js";
 
 // Helper
 import SessionLoader from "../helper/SessionLoader";
+import { useSelector } from "react-redux";
 
 function ChampionPage() {
   // Load the Session
   var currentSession = SessionLoader();
+  
+  const session = useSelector((state: any) => state.session.value);
+
+  
   const location = useLocation();
   const champion: any = location.state;
 
@@ -38,14 +43,16 @@ function ChampionPage() {
   });
 
   useEffect(() => {
+    if(session.id !== ""){
     // Get the information of the champion with its id
-      getChampionCards(champion.paladins_champion.id).then((championscards) => {
-        if(championscards.data.length > 1)
-        {
-          setChampionCards(championscards);
-        }   
-      });
-  }, []);
+    getChampionCards(session.id,champion.paladins_champion.id).then((championscards) => {
+      if(championscards !== undefined)
+      {
+        setChampionCards(championscards);
+      }   
+    });
+    }
+  }, [currentSession]);
 
   // Link the class of the champion to its icon
   var icon;
@@ -85,9 +92,9 @@ function ChampionPage() {
 
   // Sort Common Cards
   var commonCards: Array<any> = [];
-  if(championCards && championCards.data.length > 1){
+  if(championCards && championCards.length > 1){
     
-    championCards.data.map((championcard: any) => {
+    championCards.map((championcard: any) => {
       if (championcard.rarity.includes("Common")) {
         commonCards.push(championcard);
       }
@@ -97,9 +104,7 @@ function ChampionPage() {
       a.card_description.localeCompare(b.card_description)
     );
   }
-  
-
-  if (championCards !== undefined && championCards.data.length > 1) {    
+  if (championCards !== undefined && championCards.length > 1) {    
     return (
       <section className="champion__page">
         <HeroBanner
@@ -115,19 +120,18 @@ function ChampionPage() {
 
         <div className="champion__page__cards__legendary">
           {championCards &&
-            championCards.data.map((championcard: any) => {
+            championCards.map((championcard: any) => {
+              
               if (championcard.rarity.includes("Legendary")) {
-                try {
-                  categorie = championcard.card_description
-                    .split("]")[0]
-                    .substring(1);
-                  description = championcard.card_description
-                    .split("]")[1]
-                    .substring(1);
-                } catch (error) {
-                  console.log(error);
+                if (championcard.card_description.includes("]"))
+                {
+                    categorie = championcard.card_description
+                      .split("]")[0]
+                      .substring(1);
+                    description = championcard.card_description
+                      .split("]")[1]
+                      .substring(1);
                 }
-
                 return (
                   <div
                     key={championcard.card_id1}
@@ -169,7 +173,7 @@ function ChampionPage() {
           </thead>
           <tbody>
             {championCards &&
-              championCards.data.length > 0 &&
+              championCards.length > 0 &&
               commonCards.map((championcard: any) => {
                 try {
                   categorie = championcard.card_description

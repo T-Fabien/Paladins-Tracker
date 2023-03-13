@@ -20,6 +20,7 @@ function AllChampionsPage() {
   // Load the Session
   var currentSession = SessionLoader();
 
+  const session = useSelector((state: any) => state.session.value);
   const champion = useSelector((state: any) => state.champion.value);
   const dispatch = useDispatch();
 
@@ -29,12 +30,11 @@ function AllChampionsPage() {
 
   useEffect(() => {
     // If no champion data is stopped and there was no error (session created) call the api to get the champions
-    if (champion.championList == null && currentSession) {
-      
+    if (champion.championList == null && session.id !== "") {
       try {
-        getChampions().then((champion) => {
-          SetFilterData(champion.data);
-          dispatch(setChampionList({ championList: champion.data }));
+        getChampions(session.id).then((champion) => {
+          SetFilterData(champion);
+          dispatch(setChampionList({ championList: champion }));
         });
       } catch (error) {
         console.log(error);
@@ -44,7 +44,7 @@ function AllChampionsPage() {
     else {
       SetFilterData(champion.championList);
     }
-  }, [champion, currentSession]);
+  }, [currentSession]);
 
   // Champion Filter
   const updateFilter = (role: string, e: any) => {
@@ -102,7 +102,7 @@ function AllChampionsPage() {
     SetFilterData(filter_champions);
   };
 
-  if (champion.championList !== null) {
+  if (champion.championList !== null && champion.championList.length > 50) {
     return (
       <div className="allchampion__page">
         <div className="allchampion__page__filter">

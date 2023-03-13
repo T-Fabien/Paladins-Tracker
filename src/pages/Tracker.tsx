@@ -16,14 +16,13 @@ import TrackerMainInfo from "../components/TrackerPage/TrackerMainInfo";
 import TrackerSecondaryInfo from "../components/TrackerPage/TrackerSecondaryInfo";
 
 // Redux
-import { setSession } from "../redux/session";
+import { setSessionId } from "../redux/session";
 import { useDispatch, useSelector } from "react-redux";
 
 // Icons
 import SearchIcon from "@mui/icons-material/Search";
 import DataTable from "../components/TrackerPage/DataTable";
 import { setChampionList } from "../redux/champion";
-
 
 function Tracker() {
   const session = useSelector((state: any) => state.session.value);
@@ -39,34 +38,34 @@ function Tracker() {
 
   // Fonction
 
-  const getAllData = () => {
-    getPlayer(inputValue).then((playerdata) => {
-      if (playerdata.data.length !== undefined && playerdata.data.length > 0) {
-        console.log(playerdata.data);
-
-        setPlayer(playerdata.data);
-        getChampionRanks(playerdata.data[0].ActivePlayerId).then((championRank) => {
-          console.log(championRank.data);
-          setPlayerChampionRank(championRank.data)
-        });
-        getMatchHistory(playerdata.data[0].ActivePlayerId).then(
-          (matchHistory) => {
-            setMatchList(matchHistory);
-            console.log(matchHistory);
-          }
-        );
-      }
-    }).then(() => {
-      if (champion.championList == null) {
-        try {
-          getChampions().then((champion) => {
-            dispatch(setChampionList({ championList: champion.data }));
-          });
-        } catch (error) {
-          console.log(error);
+  const getAllData = (sessionId: any) => {
+    getPlayer(sessionId, inputValue)
+      .then((playerdata) => {
+        if (playerdata !== undefined && playerdata.length > 0) {
+          setPlayer(playerdata);
+          getChampionRanks(sessionId, playerdata[0].ActivePlayerId).then(
+            (championRank) => {
+              setPlayerChampionRank(championRank);
+            }
+          );
+          getMatchHistory(sessionId, playerdata[0].ActivePlayerId).then(
+            (matchHistory) => {
+              setMatchList(matchHistory);
+            }
+          );
         }
-      }
-    });
+      })
+      .then(() => {
+        if (champion.championList == null) {
+          try {
+            getChampions(sessionId).then((champion) => {
+              dispatch(setChampionList({ championList: champion }));
+            });
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      });
   };
 
   const handleInputChange = (event: any) => {
@@ -77,14 +76,13 @@ function Tracker() {
     event.preventDefault();
 
     // Load the Session
-    if (!session.isSessionCreated) {
+    if (session.id == "") {
       try {
         ping().then((ping) => {
           if (ping) {
-            createSession().then(() => {
-              console.log("test session created");
-              dispatch(setSession({ isSessionCreated: true }));
-              getAllData();
+            createSession().then((session) => {
+              dispatch(setSessionId({ id: session.session_id }));
+              getAllData(session.session_id);
             });
           }
         });
@@ -92,17 +90,14 @@ function Tracker() {
         console.log(err);
       }
     } else {
-      testSession().then((test) => {
-        if (test.data.includes("Exception - Timestamp")) {
-          dispatch(setSession({ isSessionCreated: false }));
-          createSession().then(() => {
-            console.log("test + session created");
-            getAllData();
-            dispatch(setSession({ isSessionCreated: true }));
+      testSession(session.id).then((test) => {
+        if (test !== undefined) {
+          createSession().then((session) => {
+            dispatch(setSessionId({ id: session.session_id }));
+            getAllData(session.session_id);
           });
         } else {
-          console.log("test + data");
-          getAllData();
+          getAllData(session.id);
         }
       });
     }
@@ -112,7 +107,7 @@ function Tracker() {
     player !== undefined &&
     player.ret_msg == null &&
     matchList !== undefined &&
-    matchList.data[0].Champion !== null &&
+    matchList[0].Champion !== null &&
     champion.championList !== null &&
     playerChampionRank !== null
   ) {
@@ -136,8 +131,11 @@ function Tracker() {
 
         <TrackerMainInfo player={player[0]} />
         <section className="tracker__info">
-          <TrackerSecondaryInfo player={player[0]} championRank={playerChampionRank}/>
-          <DataTable data={matchList.data} championList={champion.championList}/>
+          <TrackerSecondaryInfo
+            player={player[0]}
+            championRank={playerChampionRank}
+          />
+          <DataTable data={matchList} championList={champion.championList} />
         </section>
       </div>
     );

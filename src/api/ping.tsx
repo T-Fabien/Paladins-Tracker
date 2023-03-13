@@ -1,7 +1,7 @@
 export const ping = async () => {
   // Request
   try {
-    return fetch(`/api/ping`).then((response) => {
+    return fetch(`/api/pingjson`).then((response) => {
       try {
         // If Server Error
         if (response.status >= 500) {

@@ -4,16 +4,16 @@ export const sessionSlice = createSlice({
   name: 'session',
   initialState: {
     value: {
-      isSessionCreated: false
+      id : "",
     },
   },
   reducers: {
-    setSession: (state, action) => {
-        state.value = action.payload;
-    },
+    setSessionId: (state, action) => {
+      state.value = action.payload;
+  }
   },
 });
 
-export const { setSession } = sessionSlice.actions;
+export const { setSessionId } = sessionSlice.actions;
 
 export default sessionSlice.reducer;

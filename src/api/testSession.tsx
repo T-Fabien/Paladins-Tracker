@@ -1,7 +1,26 @@
-export const testSession = async () => {
+import moment from "moment";
+import md5 from "md5";
+
+export const testSession = async (sessionId: any) => {
+  const timestamp = moment.utc(Date.now()).format("YYYYMMDDHHmmss");
+
   // Request
   try {
-    return fetch(`/api/testsession`).then((response) => {
+    return fetch(
+      "/api/testsessionjson/" +
+        import.meta.env.VITE_DEV_ID +
+        "/" +
+        md5(
+          import.meta.env.VITE_DEV_ID +
+            "testsession" +
+            import.meta.env.VITE_DEV_KEY +
+            timestamp
+        ) +
+        "/" +
+        sessionId + 
+        "/" +
+        timestamp
+    ).then((response) => {
       try {
         // If Server Error
         if (response.status >= 500) {
@@ -14,7 +33,7 @@ export const testSession = async () => {
             throw new Error("Server responds with error!");
           });
         }
-        // Return data  
+        // Return data
         return response.json();
       } catch (err) {
         console.log(err);
@@ -23,5 +42,4 @@ export const testSession = async () => {
   } catch (err) {
     console.log(err);
   }
-  
 };
