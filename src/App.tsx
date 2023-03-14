@@ -26,8 +26,8 @@ function App() {
     createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<HomePage />} />
-      <Route path="/paladins/champions" element={<AllChampionsPage />}/>
-      <Route path="/paladins/champions/*" element={<ChampionPage />} />
+      <Route path="/champions" element={<AllChampionsPage />}/>
+      <Route path="/champions/*" element={<ChampionPage />} />
       <Route path="/tracker" element={<Tracker />} />
       <Route path="*" element={<UnderConstruction />} />
     </Route>)

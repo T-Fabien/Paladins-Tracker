@@ -1,21 +1,31 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
+
+  const [showMenu, SetShowMenu] = useState(false);
+
+  const handleShowMenu = () => {
+    SetShowMenu(!showMenu)
+  }
+
   return (
     <header>
-      <p>Paladins.gg</p>
-      <nav className="navbar">
+      <p>Paladins-Tracker</p>
+      <nav className={`navbar ${showMenu ? "showmenu" : "hidemenu"}`}>
         <ul className="navbar__content">
           <li>
             <NavLink to="/" end className="link">
               Acceuil
             </NavLink>
           </li>
-          <div className='navbar__dropdown'>
+          {/*
+                      <div className="navbar__dropdown">
             <NavLink to="/paladins" className="link">
               Paladins
             </NavLink>
-            <ul className="navbar__dropdown__items">
+            
+                        <ul className="navbar__dropdown__items">
               <li>
                 <NavLink to="/paladins/champions" end className="link">
                   Champion
@@ -32,16 +42,23 @@ function Navbar() {
                 </NavLink>
               </li>
             </ul>
-          </div>
+            </div>
+            */}
+
+          <li>
+            <NavLink to="/champions" className="link">
+              Champions
+            </NavLink>
+          </li>
+
+          {/* PAGE NEWS 
+
+
+          */}
 
           <li>
             <NavLink to="/paladins" end className="link">
               News
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/paladins" end className="link">
-              Guides
             </NavLink>
           </li>
           <li>
@@ -55,6 +72,9 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
+        <button className="navbar__burger" onClick={handleShowMenu}>
+          <span className="navbar-bar"></span>
+        </button>
       </nav>
     </header>
   );

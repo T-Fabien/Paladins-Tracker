@@ -30,7 +30,7 @@ function Tracker() {
 
   const dispatch = useDispatch();
 
-  const [player, setPlayer] = useState<any>();
+  const [player, setPlayer] = useState<any>("");
   const [matchList, setMatchList] = useState<any>();
   const [playerChampionRank, setPlayerChampionRank] = useState<any>();
 
@@ -53,6 +53,9 @@ function Tracker() {
               setMatchList(matchHistory);
             }
           );
+        }
+        else {
+          setPlayer("erreur")
         }
       })
       .then(() => {
@@ -109,6 +112,7 @@ function Tracker() {
     matchList !== undefined &&
     matchList[0].Champion !== null &&
     champion.championList !== null &&
+    playerChampionRank !== undefined &&
     playerChampionRank !== null
   ) {
     return (
@@ -139,7 +143,10 @@ function Tracker() {
         </section>
       </div>
     );
-  } else {
+  } else if (
+    player == "erreur"
+  )
+  {
     return (
       <div className="tracker">
         <form className="tracker__form" action="" onSubmit={handleSubmit}>
@@ -157,7 +164,28 @@ function Tracker() {
             <input type="submit" id="post" value="Envoyer" />
           </label>
         </form>
-        <p> Erreur </p>
+        <p> Une erreur est survenu </p>
+      </div>
+    );
+  }
+  else{
+    return (
+      <div className="tracker">
+        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+          <label htmlFor="">
+            <input
+              className="tracker__form__search__input"
+              type="text"
+              id="input"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <SearchIcon className="tracker__form__search__icon" />
+          </label>
+          <label htmlFor="">
+            <input type="submit" id="post" value="Envoyer" />
+          </label>
+        </form>
       </div>
     );
   }

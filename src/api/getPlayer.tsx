@@ -23,25 +23,6 @@ export const getPlayer = async (sessionId: any, player: string) => {
       "/" +
       player
     ).then((response) => {
-      console.log(
-        "/api" +
-        "/getplayerjson/" +
-        import.meta.env.VITE_DEV_ID +
-          "/" +
-          md5(
-            import.meta.env.VITE_DEV_ID +
-              "getplayer" +
-              import.meta.env.VITE_DEV_KEY +
-              moment.utc(Date.now()).format("YYYYMMDDHHmmss")
-          ) +
-          "/" +
-          sessionId +
-          "/" +
-          moment.utc(Date.now()).format("YYYYMMDDHHmmss") +
-          "/" +
-          player
-      );
-      
     try {
       // If Server Error
       if (response.status >= 400) {
