@@ -15,7 +15,7 @@ function Navbar() {
       <nav className={`navbar ${showMenu ? "showmenu" : "hidemenu"}`}>
         <ul className="navbar__content">
           <li>
-            <NavLink to="/" end className="link">
+            <NavLink to="/" end className="link" onClick={handleShowMenu}>
               Acceuil
             </NavLink>
           </li>
@@ -46,7 +46,7 @@ function Navbar() {
             */}
 
           <li>
-            <NavLink to="/champions" className="link">
+            <NavLink to="/champions" className="link" onClick={handleShowMenu}>
               Champions
             </NavLink>
           </li>
@@ -57,17 +57,17 @@ function Navbar() {
           */}
 
           <li>
-            <NavLink to="/paladins" end className="link">
+            <NavLink to="/paladins" end className="link" onClick={handleShowMenu}>
               News
             </NavLink>
           </li>
           <li>
-            <NavLink to="/paladins" end className="link">
+            <NavLink to="/paladins" end className="link" onClick={handleShowMenu}>
               TierList
             </NavLink>
           </li>
           <li>
-            <NavLink to="/tracker" end className="link">
+            <NavLink to="/tracker" end className="link" onClick={handleShowMenu}>
               Tracker
             </NavLink>
           </li>
