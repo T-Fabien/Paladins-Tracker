@@ -43,16 +43,16 @@ function ChampionPage() {
   });
 
   useEffect(() => {
-    if(session.id !== ""){
+    if(currentSession !== ""){
     // Get the information of the champion with its id
-    getChampionCards(session.id,champion.paladins_champion.id).then((championscards) => {
+    getChampionCards(currentSession,champion.paladins_champion.id).then((championscards) => {
       if(championscards !== undefined)
       {
         setChampionCards(championscards);
       }   
     });
     }
-  }, [currentSession]);
+  }, [session.id]);
 
   // Link the class of the champion to its icon
   var icon;
@@ -127,7 +127,7 @@ function ChampionPage() {
                 {
                     categorie = championcard.card_description
                       .split("]")[0]
-                      .substring(1);
+                      .substring(1) + " : ";
                     description = championcard.card_description
                       .split("]")[1]
                       .substring(1);
@@ -157,7 +157,7 @@ function ChampionPage() {
                         "champion__page__cards__legendary__container__text"
                       }
                     >
-                      <span>{categorie} </span>: {description}
+                      <span>{categorie} </span> {description}
                     </p>
                   </div>
                 );
@@ -178,15 +178,18 @@ function ChampionPage() {
             {championCards &&
               championCards.length > 0 &&
               commonCards.map((championcard: any) => {
-                try {
+                if(championcard.card_description.includes("]"))
+                {
                   categorie = championcard.card_description
-                    .split("]")[0]
-                    .substring(1);
+                  .split("]")[0]
+                  .substring(1);
                   description = championcard.card_description
                     .split("]")[1]
                     .substring(1);
-                } catch (error) {
-                  console.log(error);
+                }
+                else{
+                  categorie = ""
+                  description = championcard.card_description
                 }
 
                 return (

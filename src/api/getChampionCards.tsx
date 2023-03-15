@@ -14,12 +14,12 @@ export const getChampionCards = async (sessionId: any, championId: number) => {
       import.meta.env.VITE_DEV_ID +
         "getchampioncards" +
         import.meta.env.VITE_DEV_KEY +
-        timestamp
+        moment.utc(Date.now()).format("YYYYMMDDHHmmss")
     ) +
     "/" +
     sessionId +
     "/" +
-    timestamp +
+    moment.utc(Date.now()).format("YYYYMMDDHHmmss") +
     "/" +
     championId +
     "/" +

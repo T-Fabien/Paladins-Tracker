@@ -37,9 +37,6 @@ function DataTable({ data, championList }: Props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  console.log(data);
-  console.log(championList);
   return (
     <TableContainer
       component={Paper}
@@ -49,17 +46,22 @@ function DataTable({ data, championList }: Props) {
       }}
       className="tracker__info__datatable"
     >
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table
+        sx={{
+          minWidth: 650,
+        }}
+        aria-label="simple table"
+      >
         <TableHead>
           <TableRow
-      sx={{
-        backgroundColor: "#23252c",
-        border: "3px solid #02abff",
-        "& th": {
-          fontSize: "1.25rem",
-          color: "white"
-        }
-      }}
+            sx={{
+              backgroundColor: "#23252c",
+              border: "3px solid #008ace",
+              "& th": {
+                fontSize: "1.25rem",
+                color: "white",
+              },
+            }}
           >
             <TableCell align="center" width={150}>
               Résultat
@@ -115,16 +117,17 @@ function DataTable({ data, championList }: Props) {
             return (
               <TableRow
                 key={match.Match}
-                sx={{ 
+                sx={{
                   backgroundColor: "#23252c",
                   borderRight: "3px solid #008ace",
                   borderLeft: "3px solid #008ace",
-                  borderBottom: "2px solid #008ace",
+                  borderBottom: "3px solid #008ace",
                   "& td": {
                     fontSize: "1.25rem",
                     color: "white",
                   },
-                  "&:last-child td, &:last-child th": { border: 0 } }}
+                  "&:last-child td, &:last-child th": { border: 0 },
+                }}
                 className="tracker__info__datatable__match"
               >
                 {match.Win_Status === "Win" ? (
@@ -185,9 +188,9 @@ function DataTable({ data, championList }: Props) {
                       </span>
                     </p>
                     <HorizontalBarChart
-                      positiveValue={(match.Kills + (0.5 * match.Assists))}
-                      negativeValue={0}
-                      width={120}
+                      positiveValue={match.Kills + 0.5 * match.Assists}
+                      negativeValue={match.Deaths}
+                      width={140}
                     />
                     <p>
                       {(
@@ -205,29 +208,25 @@ function DataTable({ data, championList }: Props) {
             );
           })}
           {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }} 
-              >
-              <TableCell colSpan={6} 
-              />
+            <TableRow style={{ height: 53 * emptyRows }}>
+              <TableCell colSpan={6} />
             </TableRow>
           )}
         </TableBody>
-
         <TableFooter>
           <TableRow
-                      sx={{ 
-                        border: "3px solid #02abff",
-                        borderTop: "1px solid #02abff",
-                        color: "white",
-                        "& td": {
-                          fontSize: "1.25rem",
-                          color: "white",
-                        },
-                        "& svg": {
-                          fill : 'white',
-                        }
-                      }}
-                        >
+            sx={{
+              border: "3px solid #008ace",
+              color: "white",
+              "& td": {
+                fontSize: "1.25rem",
+                color: "white",
+              },
+              "& svg": {
+                fill: "white",
+              },
+            }}
+          >
             <TablePagination
               rowsPerPageOptions={[10, 25, { label: "All", value: -1 }]}
               colSpan={3}

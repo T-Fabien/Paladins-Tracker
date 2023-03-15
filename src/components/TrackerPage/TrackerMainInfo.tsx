@@ -116,11 +116,15 @@ function TrackerMainInfo({ player }: Props) {
           </p>
         </div>
         <div className="tracker__info__main__rank">
+        {
+              player.RankedKBM.Tier > 0 &&
+              <img
+              src={"/assets/paladins_rank/" + player.RankedKBM.Tier + ".png"}
+              alt=""
+            />
+            }
           <p>{tierRank[player.RankedKBM.Tier]}</p>
-          <img
-            src={"/assets/paladins_rank/" + player.RankedKBM.Tier + ".png"}
-            alt=""
-          />
+        
         </div>
       </div>
     </section>

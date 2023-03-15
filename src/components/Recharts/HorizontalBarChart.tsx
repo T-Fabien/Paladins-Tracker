@@ -1,6 +1,7 @@
 import {
   Bar,
   BarChart,
+  Cell,
   XAxis,
   YAxis,
 } from "recharts";
@@ -15,8 +16,8 @@ function HorizontalBarChart({ positiveValue, negativeValue, width }: Props) {
   const data = [
     {
       name: "Ratio",
-      positiveValue: positiveValue,
-      negativeValue: negativeValue,
+      positiveValue: ((positiveValue) / (positiveValue + negativeValue)),
+      negativeValue: ((negativeValue) / (positiveValue + negativeValue)),
     },
   ];
   return (
@@ -33,6 +34,8 @@ function HorizontalBarChart({ positiveValue, negativeValue, width }: Props) {
               dataKey="name"
             />
             <Bar legendType="none" dataKey="positiveValue" fill="#228B22" barSize={15} stackId="a">
+                <Cell fill="#228B22" />
+                <Cell fill="#ee4134" />
             </Bar>
             <Bar legendType="none" dataKey="negativeValue" fill="#ee4134" stackId="a">
             </Bar>
