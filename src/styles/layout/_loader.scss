@@ -1,0 +1,65 @@
+.loader {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  &__ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: ring 2s linear infinite
+  }
+  @keyframes ring {
+    0%{
+        transform: rotate(0deg);
+        box-shadow: 1px 5px 2px #7c0000;
+    }
+    15%{
+        transform: rotate(50deg);
+        box-shadow: 1px 5px 2px #e65c00;
+    }
+    30%{
+        transform: rotate(100deg);
+        box-shadow: 1px 5px 2px #fff600;
+    }
+    45%{
+        transform: rotate(150deg);
+        box-shadow: 1px 5px 2px #18b201;
+    }
+    60%{
+        transform: rotate(200deg);
+        box-shadow: 1px 5px 2px #0456c8;
+    }
+    85%{
+        transform: rotate(280deg);
+        box-shadow: 1px 5px 2px #83b201;
+    }
+    90%{
+        transform: rotate(320deg);
+        box-shadow: 1px 5px 2px #b25601;
+    }
+    100%{
+        transform: rotate(360deg);
+        box-shadow: 1px 5px 2px #7c0000;
+    }
+  }
+  &__ring::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(255,255,255,0.3);
+  }
+  &__text {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 200px;
+    animation: text 3s ease-in-out linear infinite;
+  }
+}

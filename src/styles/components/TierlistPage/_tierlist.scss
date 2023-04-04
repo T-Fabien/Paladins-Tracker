@@ -1,0 +1,59 @@
+.tierlist__page__table {
+  width: 90%;
+  margin: 0 5%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+  & tbody {
+    & td:first-child {
+      text-align: center;
+      border: 1px solid white;
+      font-size: 1.05rem;
+      width: 100px;
+    }
+  }
+
+  &__champtier {
+    display: flex;
+    text-align: center;
+    border: 1px solid white;
+    font-size: 1.05rem;
+    & div{
+        padding: 5px 5px 5px 5px;
+    }
+    &__image {
+      width: 80px;
+      height: 80px;
+    }
+    &__name{
+        font-size: 0.75vw;
+    }
+  }
+}
+
+.tierlist__page__table__{
+    &tierS{
+        background-color: #fe7f7e;
+        color: black;
+    }
+    &tierA{
+        background-color: #ffbe7e;
+        color: black;
+    }
+    &tierB{
+        background-color: #fefe7f;
+        color: black;
+    }
+    &tierC{
+        background-color: #befe7f;
+        color: black;
+    }
+    &tierD{
+        background-color: #7eff7e;
+        color: black;
+    }
+    &tierE{
+        background-color: #7efffe;
+        color: black;
+    }
+}

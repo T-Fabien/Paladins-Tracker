@@ -142,7 +142,7 @@ export const champions_data = {
     },
     {
       id: 29,
-      name: 'Lilith',
+      name: 'Lillith',
       difficulty: 4,
     },
     {
@@ -284,6 +284,11 @@ export const champions_data = {
       id: 57,
       name: "Mal'Damba",
       difficulty: 1,
+    },
+    {
+      id: 57,
+      name: "Nyx",
+      difficulty: 2,
     },
   ],
 };

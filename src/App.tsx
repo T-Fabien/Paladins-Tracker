@@ -15,11 +15,13 @@ import UnderConstruction from "./components/UnderConstruction";
 import HomePage from './pages/Homepage';
 import AllChampionsPage from './pages/AllChampions';
 import ChampionPage from "./pages/ChampionPage";
+import Tierlist from "./pages/Tierlist";
 import Tracker from "./pages/Tracker";
 
 // Redux
 import { store } from "./store";
 import { Provider } from 'react-redux';
+
 
 function App() {
   const router = createBrowserRouter(
@@ -28,7 +30,8 @@ function App() {
       <Route index element={<HomePage />} />
       <Route path="/champions" element={<AllChampionsPage />}/>
       <Route path="/champions/*" element={<ChampionPage />} />
-      <Route path="/tracker" element={<Tracker />} />
+      <Route path="/tierlist" element={<Tierlist />} />
+      <Route path="/tracker/*" element={<Tracker />} />
       <Route path="*" element={<UnderConstruction />} />
     </Route>)
   );

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // API
 import { ping } from "../api/ping";
@@ -29,16 +30,26 @@ function Tracker() {
   const champion = useSelector((state: any) => state.champion.value);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [player, setPlayer] = useState<any>("");
   const [matchList, setMatchList] = useState<any>();
   const [playerChampionRank, setPlayerChampionRank] = useState<any>();
+  const [isLoaded, setIsLoaded] = useState<boolean>(true);
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(location.pathname.substring(9));
+
+  useEffect(() => {
+    if (location.pathname.substring(9)) {
+      handleSubmit(undefined);
+    } else {
+      setPlayer(undefined)
+    }
+  }, []);
 
   // Fonction
-
   const getAllData = (sessionId: any) => {
+
     getPlayer(sessionId, inputValue)
       .then((playerdata) => {
         if (playerdata !== undefined && playerdata.length > 0) {
@@ -46,6 +57,7 @@ function Tracker() {
           getChampionRanks(sessionId, playerdata[0].ActivePlayerId).then(
             (championRank) => {
               setPlayerChampionRank(championRank);
+              console.log(championRank);
             }
           );
           getMatchHistory(sessionId, playerdata[0].ActivePlayerId).then(
@@ -53,9 +65,8 @@ function Tracker() {
               setMatchList(matchHistory);
             }
           );
-        }
-        else {
-          setPlayer("erreur")
+        } else {
+          setPlayer("erreur");
         }
       })
       .then(() => {
@@ -69,6 +80,9 @@ function Tracker() {
           }
         }
       });
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 1900); // Mettre le temps en millisecondes
   };
 
   const handleInputChange = (event: any) => {
@@ -76,33 +90,41 @@ function Tracker() {
   };
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
-
-    // Load the Session
-    if (session.id == "") {
-      try {
-        ping().then((ping) => {
-          if (ping) {
+    if (event) {
+      event.preventDefault();
+    }
+    if (
+      inputValue == location.pathname.substring(9) && !event ||
+      inputValue !== location.pathname.substring(9) && event
+    ){
+      setIsLoaded(false)
+      // Load the Session
+      if (session.id == "") {
+        try {
+          ping().then((ping) => {
+            if (ping) {
+              createSession().then((session) => {
+                dispatch(setSessionId({ id: session.session_id }));
+                getAllData(session.session_id);
+              });
+            }
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        testSession(session.id).then((test) => {
+          if (test !== undefined) {
             createSession().then((session) => {
               dispatch(setSessionId({ id: session.session_id }));
               getAllData(session.session_id);
             });
+          } else {
+            getAllData(session.id);
           }
         });
-      } catch (err) {
-        console.log(err);
       }
-    } else {
-      testSession(session.id).then((test) => {
-        if (test !== undefined) {
-          createSession().then((session) => {
-            dispatch(setSessionId({ id: session.session_id }));
-            getAllData(session.session_id);
-          });
-        } else {
-          getAllData(session.id);
-        }
-      });
+      navigate(`/tracker/${inputValue}`);
     }
   };
 
@@ -113,7 +135,8 @@ function Tracker() {
     matchList[0].Champion !== null &&
     champion.championList !== null &&
     playerChampionRank !== undefined &&
-    playerChampionRank !== null
+    playerChampionRank !== null &&
+    isLoaded == true
   ) {
     return (
       <div className="tracker">
@@ -143,10 +166,7 @@ function Tracker() {
         </section>
       </div>
     );
-  } else if (
-    player == "erreur"
-  )
-  {
+  } else if (player == "erreur") {
     return (
       <div className="tracker">
         <form className="tracker__form" action="" onSubmit={handleSubmit}>
@@ -167,8 +187,31 @@ function Tracker() {
         <p> Une erreur est survenu </p>
       </div>
     );
-  }
-  else{
+  } else if (isLoaded == false) {
+    return (
+      <div className="tracker">
+        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+          <label htmlFor="">
+            <input
+              className="tracker__form__search__input"
+              type="text"
+              id="input"
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <SearchIcon className="tracker__form__search__icon" />
+          </label>
+          <label htmlFor="">
+            <input type="submit" id="post" value="Envoyer" />
+          </label>
+        </form>
+        <div className="loader">
+          <div className="loader__ring"></div>
+          <span className="loader__text">Chargement...</span>
+        </div>
+      </div>
+    );
+  } else {
     return (
       <div className="tracker">
         <form className="tracker__form" action="" onSubmit={handleSubmit}>

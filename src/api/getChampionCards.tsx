@@ -1,7 +1,7 @@
 import moment from "moment";
 import md5 from "md5";
 
-export const getChampionCards = async (sessionId: any, championId: number) => {
+export const getChampionCards = async (sessionId: any, championId: any) => {
   const timestamp = moment.utc(Date.now()).format("YYYYMMDDHHmmss");
 
   // Request
@@ -14,16 +14,15 @@ export const getChampionCards = async (sessionId: any, championId: number) => {
       import.meta.env.VITE_DEV_ID +
         "getchampioncards" +
         import.meta.env.VITE_DEV_KEY +
-        moment.utc(Date.now()).format("YYYYMMDDHHmmss")
+        timestamp
     ) +
     "/" +
     sessionId +
     "/" +
-    moment.utc(Date.now()).format("YYYYMMDDHHmmss") +
+    timestamp +
     "/" +
     championId +
-    "/" +
-    "3"
+    "/3"
   ).then((response) => {
     try {
       // If Server Error

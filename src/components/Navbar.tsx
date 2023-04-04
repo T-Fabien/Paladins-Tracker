@@ -19,50 +19,18 @@ function Navbar() {
               Acceuil
             </NavLink>
           </li>
-          {/*
-                      <div className="navbar__dropdown">
-            <NavLink to="/paladins" className="link">
-              Paladins
-            </NavLink>
-            
-                        <ul className="navbar__dropdown__items">
-              <li>
-                <NavLink to="/paladins/champions" end className="link">
-                  Champion
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/paladins" end className="link">
-                  Items
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/paladins" end className="link">
-                  Cartes
-                </NavLink>
-              </li>
-            </ul>
-            </div>
-            */}
-
           <li>
             <NavLink to="/champions" className="link" onClick={handleShowMenu}>
               Champions
             </NavLink>
           </li>
-
-          {/* PAGE NEWS 
-
-
-          */}
-
           <li>
             <NavLink to="/paladins" end className="link" onClick={handleShowMenu}>
               News
             </NavLink>
           </li>
           <li>
-            <NavLink to="/paladins" end className="link" onClick={handleShowMenu}>
+            <NavLink to="/tierlist" end className="link" onClick={handleShowMenu}>
               TierList
             </NavLink>
           </li>

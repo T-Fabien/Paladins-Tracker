@@ -10,6 +10,9 @@ import { setChampionList } from "../redux/champion";
 // API
 import { getChampions } from "../api/getChampions";
 
+// data
+import { all_champion_list } from "../data/all_champions";
+
 // Helpers
 import SessionLoader from "../helper/SessionLoader";
 
@@ -18,7 +21,12 @@ import SearchIcon from "@mui/icons-material/Search";
 
 function AllChampionsPage() {
   // Load the Session
-  var currentSession = SessionLoader();
+  var currentSession : any;
+  try {
+    currentSession = SessionLoader()
+  } catch (error) {
+    console.log(error);
+  }
 
   const session = useSelector((state: any) => state.session.value);
   const champion = useSelector((state: any) => state.champion.value);
@@ -29,22 +37,32 @@ function AllChampionsPage() {
   const [FilterData, SetFilterData] = useState<any>(champion.value); // Filters the champions according to the user's choice
 
   useEffect(() => {
-    // If no champion data is stopped and there was no error (session created) call the api to get the champions
-    if (champion.championList == null && session.id !== "") {
+    // If no champion data is store and there was no session error (session created) call the api to get the champions
+    if (session.id !== "") {
       try {
         getChampions(session.id).then((champion) => {
           SetFilterData(champion);
           dispatch(setChampionList({ championList: champion }));
         });
       } catch (error) {
+        SetFilterData(all_champion_list.champions_list);
+        dispatch(setChampionList({ championList: all_champion_list.champions_list }));
         console.log(error);
       }
     }
     // if there is a champion data then just reset the filter
     else {
       SetFilterData(champion.championList);
+      if(champion.championList.length == 1) {
+        dispatch(setChampionList({ championList: all_champion_list.champions_list }));
+      }
     }
   }, [currentSession]);
+
+  if(champion == undefined || champion.championList == null){
+    dispatch(setChampionList({ championList: all_champion_list.champions_list }));
+    SetFilterData(all_champion_list.champions_list);
+  }
 
   // Champion Filter
   const updateFilter = (role: string, e: any) => {
@@ -156,9 +174,8 @@ function AllChampionsPage() {
             <button onClick={(e) => updateFilter("Soutien", e)}>Healer</button>
           </div>
         </div>
-        <p>Chargement ...</p>
       </div>
-    );
+    )
   }
 }
 

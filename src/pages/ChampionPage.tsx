@@ -22,18 +22,19 @@ import { champions_data } from "../data/champions_data.js";
 
 // Helper
 import SessionLoader from "../helper/SessionLoader";
-import { useSelector } from "react-redux";
 
 function ChampionPage() {
   // Load the Session
-  var currentSession = SessionLoader();
-  
-  const session = useSelector((state: any) => state.session.value);
-
-  
+  var currentSession: any;
+  try {
+    currentSession = SessionLoader();
+  } catch (error) {
+    console.log(error);
+  }
   const location = useLocation();
-  const champion: any = location.state;
 
+
+  const champion: any = location.state;
   // All the cards and legendary of the champion
   const [championCards, setChampionCards] = useState<any>();
 
@@ -43,20 +44,22 @@ function ChampionPage() {
   });
 
   useEffect(() => {
-    if(currentSession !== ""){
-    // Get the information of the champion with its id
-    getChampionCards(currentSession,champion.paladins_champion.id).then((championscards) => {
-      if(championscards !== undefined)
-      {
-        setChampionCards(championscards);
-      }   
-    });
+    if (currentSession !== "") {
+      // Get the information of the champion with its id
+      getChampionCards(currentSession, champion.paladins_champion.id).then(
+        (championscards) => {
+          if (championscards !== undefined) {
+            setChampionCards(championscards);
+          }
+        }
+      );
     }
-  }, [session.id]);
+  }, [currentSession]);
 
   // Link the class of the champion to its icon
   var icon;
   var role;
+
   switch (champion.paladins_champion.Roles) {
     case "Paladins Dégâts":
       icon = damageIcon;
@@ -92,19 +95,19 @@ function ChampionPage() {
 
   // Sort Common Cards
   var commonCards: Array<any> = [];
-  if(championCards && championCards.length > 1){
-    
+  if (championCards && championCards.length > 1) {
     championCards.map((championcard: any) => {
       if (championcard.rarity.includes("Common")) {
         commonCards.push(championcard);
       }
     });
-  
+
     commonCards.sort((a: any, b: any) =>
       a.card_description.localeCompare(b.card_description)
     );
   }
-  if (championCards !== undefined && championCards.length > 1) {    
+
+  if (champion !== undefined) {
     return (
       <section className="champion__page">
         <HeroBanner
@@ -121,19 +124,17 @@ function ChampionPage() {
         <div className="champion__page__cards__legendary">
           {championCards &&
             championCards.map((championcard: any) => {
-              
               if (championcard.rarity.includes("Legendary")) {
-                if (championcard.card_description.includes("]"))
-                {
-                    categorie = championcard.card_description
-                      .split("]")[0]
-                      .substring(1) + " : ";
-                    description = championcard.card_description
-                      .split("]")[1]
-                      .substring(1);
-                } else {
-                  categorie = ""
+                if (championcard.card_description.includes("]")) {
+                  categorie =
+                    championcard.card_description.split("]")[0].substring(1) +
+                    " : ";
                   description = championcard.card_description
+                    .split("]")[1]
+                    .substring(1);
+                } else {
+                  categorie = "";
+                  description = championcard.card_description;
                 }
                 return (
                   <div
@@ -164,34 +165,31 @@ function ChampionPage() {
               }
             })}
         </div>
-        <table className="champion__page__cards__common__table">
-          <thead>
-            <tr>
-              <th> Nom </th>
-              <th> Image </th>
-              <th> Catégorie </th>
-              <th> Description </th>
-              <th> Coolodwn </th>
-            </tr>
-          </thead>
-          <tbody>
-            {championCards &&
-              championCards.length > 0 &&
-              commonCards.map((championcard: any) => {
-                if(championcard.card_description.includes("]"))
-                {
+        {championCards != null && championCards.length > 0 && (
+          <table className="champion__page__cards__common__table">
+            <thead>
+              <tr>
+                <th> Nom </th>
+                <th> Image </th>
+                <th> Catégorie </th>
+                <th> Description </th>
+                <th> Coolodwn </th>
+              </tr>
+            </thead>
+            <tbody>
+              {commonCards.map((championcard: any) => {
+                let categorie = "";
+                let description = "";
+                if (championcard.card_description.includes("]")) {
                   categorie = championcard.card_description
-                  .split("]")[0]
-                  .substring(1);
+                    .split("]")[0]
+                    .substring(1);
                   description = championcard.card_description
                     .split("]")[1]
                     .substring(1);
+                } else {
+                  description = championcard.card_description;
                 }
-                else{
-                  categorie = ""
-                  description = championcard.card_description
-                }
-
                 return (
                   <tr key={championcard.card_id1}>
                     <td className="champion__page__cards__common__table__name">
@@ -213,12 +211,13 @@ function ChampionPage() {
                   </tr>
                 );
               })}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        )}
       </section>
     );
   } else {
-    return <div>Loading...</div>;
+    return <div className="loader">Chargement...</div>
   }
 }
 
