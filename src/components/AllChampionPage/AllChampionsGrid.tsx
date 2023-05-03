@@ -23,11 +23,9 @@ function AllChampionsGrid({ data, champions, filter }: Props) {
       }
     });
   }
-
-  if (data !== undefined && data !== null) {
     return (
       <div className="champion__grid">
-        {data.map((champ: any, key: number) => {
+        {data && data.map((champ: any, key: number) => {
           return (
             <ChampionCard
               key={key}
@@ -48,16 +46,6 @@ function AllChampionsGrid({ data, champions, filter }: Props) {
         })}
       </div>
     );
-  } else {
-    return (
-      <div className="champion__grid">
-        <div className="loader">
-          <div className="loader__ring"></div>
-          <span className="loader__text">Chargement...</span>
-        </div>
-      </div>
-    );
   }
-}
 
 export default AllChampionsGrid;

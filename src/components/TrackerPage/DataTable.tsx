@@ -168,7 +168,7 @@ function DataTable({ data, championList }: Props) {
                   <p>{match.Queue}</p>
                   <p>
                     {Math.floor(match.Time_In_Match_Seconds / 60)}:
-                    {match.Time_In_Match_Seconds % 60} Min
+                    {`${(match.Time_In_Match_Seconds % 60).toString().padStart(2, '0')} Min`}
                   </p>
                 </TableCell>
 

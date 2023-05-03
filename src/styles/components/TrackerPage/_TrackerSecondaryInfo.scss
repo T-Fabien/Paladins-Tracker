@@ -1,8 +1,12 @@
 .tracker__info__secondary {
-  width: calc(20% - 30px);
+  width: calc(25% - 30px);
   margin-right: 30px;
   & > section {
     margin-bottom: 20px;
+    border: 2px solid $blue;
+    box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
+    border-radius: 5px;
+    text-align: center;
     & > h3 {
       border-bottom: 2px solid $lightblue;
       margin: 10px 0;
@@ -17,37 +21,7 @@
       padding: 5px 20px;
     }
   }
-  &__kda__section {
-    border: 2px solid $blue;
-    box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
-    border-radius: 5px;
-    &__ratio p {
-      font-size: 1.15rem;
-      & span{
-        color: $lightgreen;
-        font-size: 1.3rem;
-        font-weight: 600;
-      }
-    }
-    &__stats{
-      margin-bottom: 10px;
-      margin-top: -5px;
-      & p span {
-        font-size: 1.2rem;
-      }
-
-      &__kill{
-        color: $lightgreen;
-      }
-      &__death{
-        color: $red;
-      }
-    }
-  }
   &__actual__season {
-    border: 2px solid $blue;
-    box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
-    border-radius: 5px;
     & p {
       font-size: 1.15rem;
     }
@@ -61,28 +35,30 @@
         width: 96px;
       }
     }
-    
 
     &__points{
       margin: 0 0 10px 0;
     }
 
-    &__score__text{
-      font-size: 1.2rem;
-      &__win{
-        color: $lightgreen;
-      }
-      &__losses{
-        color: $red;
-      }
-    }
     &__percentage{
       position: relative;
-      top: -18px;
-      margin-bottom: -30px;
+      top: -15px;
+      margin-bottom: 0px;
       & .radialchart h3 {
         font-size: 1.25rem;
       }
+    }
+  }
+  &__roles{
+    & > .recharts-wrapper {
+      padding: 0px ;
+      margin: auto;
+    }
+    & .test {
+      font-size: 1rem;
+      font-weight: 300;
+      text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8),
+      -3px 0px 7px rgba(0, 0, 0, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
     }
   }
 }

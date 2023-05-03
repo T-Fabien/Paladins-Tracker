@@ -24,7 +24,7 @@ function HorizontalBarChart({ positiveValue, negativeValue, width }: Props) {
           <BarChart
             layout="vertical"
             data={data}
-            height={30} 
+            height={25} 
             width={width}
           >
             <XAxis hide type="number" />

@@ -64,23 +64,6 @@ function TrackerActualSeason({ rankedInfo, accountKills, accountDeath, accountAs
               width={150}
             />
           </div>
-          <div className="tracker__info__secondary__actual__season__score">
-            <p>Victoires / Défaites</p>
-            <HorizontalBarChart
-              positiveValue={accountKills + 0.5 * accountAssist}
-              negativeValue={accountDeath}
-              width={150}
-            />
-            <p className="tracker__info__secondary__actual__season__score__text">
-              <span className="tracker__info__secondary__actual__season__score__text__win">
-                {rankedInfo.Wins}
-              </span>{" "}
-              /{" "}
-              <span className="tracker__info__secondary__actual__season__score__text__losses">
-                {rankedInfo.Losses}
-              </span>
-            </p>
-          </div>
           <div className="tracker__info__secondary__actual__season__percentage">
             <RadialChart
               positiveValue={rankedInfo.Wins}

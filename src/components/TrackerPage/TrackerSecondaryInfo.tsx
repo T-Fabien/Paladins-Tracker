@@ -1,8 +1,4 @@
-import React from "react";
-import HorizontalBarChart from "../Recharts/HorizontalBarChart";
-import RadialChart from "../Recharts/RadialChart";
 import TrackerActualSeason from "./TrackerSecondaryInfoSection/TrackerActualSeason";
-import TrackerKdaSection from "./TrackerSecondaryInfoSection/TrackerKdaSection";
 import TrackerRoleSection from "./TrackerSecondaryInfoSection/TrackerRoleSection";
 
 type Props = {
@@ -26,10 +22,8 @@ function TrackerSecondaryInfo({ player, championRank }: Props) {
 
   return (
     <div className="tracker__info__secondary">
-      <TrackerKdaSection accountKDA={accountKDA} accountKills={accountKills} accountAssist={accountAssist} accountDeath={accountDeath}/>
       <TrackerActualSeason rankedInfo={player.RankedKBM} accountKills={accountKills} accountAssist={accountAssist} accountDeath={accountDeath}/>
       <TrackerRoleSection championRank={championRank}/>
-
     </div>
   );
 }

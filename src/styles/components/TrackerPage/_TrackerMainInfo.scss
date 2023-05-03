@@ -4,25 +4,27 @@
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 8px;
   margin: 20px 5% 0 5%;
-  height: 140px;
+  height: 180px;
   & > div {
     align-items: center;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     margin: 0 10px;
   }
+  & h3{
+    font-size: 1.3rem;
+  }
 
   &__avatar > img {
-    width: 128px;
-    height: 128px;
+    width: 160px;
+    height: 160px;
   }
   &__account {
     margin-left: 15px;
     & > h2 {
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 600;
       margin-bottom: 10px;
     }
@@ -35,47 +37,46 @@
     }
   }
 
-  &__winlose__ratio,
-  &__winlose__score {
-    align-items: center;
-    display: flex;
+  &__kda{
     flex-direction: column;
-    margin: 0 40px;
-    & > p {
-      font-size: 1.2rem;
+    text-align: center;
+    &__ratio p {
+      font-size: 1.15rem;
+      margin: 10px 0 5px 0;
+      & span{
+        color: $lightgreen;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+    }
+    &__stats{
+      & p span {
+        font-size: 1.2rem;
+      }
+      &__kill{
+        color: $lightgreen;
+      }
+      &__death{
+        color: $red;
+      }
     }
   }
 
   &__winlose__ratio {
-    & > p {
-      position: relative;
-      top: 15px;
-      font-size: 1.2rem;
-    }
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
     & .radialchart h3 {
-        font-size: 1.25rem;
-    }
-  }
-
-  &__winlose__score {
-    & > p span {
-      font-size: 1.6rem;
-      font-weight: 600;
-    }
-
-    & > div {
-      margin: 10px 0;
-    }
-
-    &__win {
-      color: lighten(#228b22, 10%);
-    }
-    &__losses {
-      color: $red;
+      position: relative;
+      text-align: center;
+      top: -5px;
+      font-size: 1.3rem;
     }
   }
 
   &__rank {
+    flex-direction: column;
     align-items: center;
     & > p {
       font-size: 1.3rem;

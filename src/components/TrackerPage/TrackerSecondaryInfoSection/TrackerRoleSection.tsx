@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
-import { Cell, Pie, PieChart } from "recharts";
+import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
 
 type Props = {
   championRank: any;
 };
 
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  name,
+}: any) => {
+  const radius = outerRadius + (outerRadius - innerRadius) * 0.55;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN) *0.8;
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "middle" : "middle"}
+      dominantBaseline="central"
+      className="test"
+    >
+      {`${name} : ${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
+
 function TrackerRoleSection({ championRank }: Props) {
   const champion = useSelector((state: any) => state.champion.value);
-  
+
   var championRole;
 
   var countDamageTime: number = 0;
@@ -18,8 +46,10 @@ function TrackerRoleSection({ championRank }: Props) {
 
   championRank.map((championStats: any) => {
     championRole = champion.championList
-    .filter((championInfo: any) => championStats.champion_id.includes(championInfo.id))
-    .map((championInfo: any) => championInfo.Roles);
+      .filter((championInfo: any) =>
+        championStats.champion_id.includes(championInfo.id)
+      )
+      .map((championInfo: any) => championInfo.Roles);
 
     switch (championRole[0]) {
       case "Paladins Dégâts":
@@ -40,65 +70,27 @@ function TrackerRoleSection({ championRank }: Props) {
   });
 
   const data = [
-    { name: "Damage", value: countDamageTime },
-    { name: "Flank", value: countFlankTime },
-    { name: "Tank", value: countTankTime },
-    { name: "Heal", value: countSupportTime },
+    { name: "Heal", value: countSupportTime, fill: "#E86100" },
+    { name: "Tank", value: countTankTime, fill: "#800020" },
+    { name: "Flank", value: countFlankTime, fill: "#007B00" },
+    { name: "Dps", value: countDamageTime, fill: "#0088FE" },
   ];
 
-  const COLORS = ["#0088FE", "#228b22", "#800020 ", "#e86100"];
-
-  const RADIAN = Math.PI / 180;
-  const renderCustomizedLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-    name,
-  }: any) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-    return (
-      <text
-        x={x}
-        y={y}
-        fill="white"
-        textAnchor={x > cx ? "middle" : "middle"}
-        dominantBaseline="central"
-        width="10px"
-      >
-        {name}
-        <tspan x={x} dy="18px">
-          {" "}
-          {`${(percent * 100).toFixed(0)}%`}
-        </tspan>
-      </text>
-    );
-  };
-
   return (
-    <section className="tracker__info__secondary__actual__season">
+    <section className="tracker__info__secondary__roles">
       <h3> Rôles jouée</h3>
-      <PieChart width={240} height={240}>
+      <PieChart width={360} height={250}>
         <Pie
           data={data}
-          cx="100px"
-          cy="10px"
+          cx="50%"
+          cy="50%"
+          outerRadius={90}
+          dataKey="value"
+          startAngle={90}
+          endAngle={450}
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={110}
-          fill="#8884d8"
-          dataKey="value"
-          nameKey="name"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
+        />
       </PieChart>
     </section>
   );

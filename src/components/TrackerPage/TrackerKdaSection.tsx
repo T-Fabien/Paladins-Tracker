@@ -1,5 +1,5 @@
 import React from 'react'
-import HorizontalBarChart from '../../Recharts/HorizontalBarChart'
+import HorizontalBarChart from '../Recharts/HorizontalBarChart'
 
 type Props = {
     accountKDA: string;
@@ -10,9 +10,9 @@ type Props = {
 
 function TrackerKdaSection({ accountKDA, accountKills, accountDeath, accountAssist }: Props) {
   return (
-    <section className="tracker__info__secondary__kda__section">
-    <h3> KDA général</h3>
-    <div className="tracker__info__secondary__kda__section__ratio">
+    <div className="tracker__info__main__kda">
+    <h3> Stats du joueur</h3>
+    <div className="tracker__info__main__kda__ratio">
       <p>
         Ratio : <span>{accountKDA}</span>
       </p>
@@ -22,22 +22,22 @@ function TrackerKdaSection({ accountKDA, accountKills, accountDeath, accountAssi
         width={190}
       />
     </div>
-    <div className="tracker__info__secondary__kda__section__stats">
+    <div className="tracker__info__main__kda__stats">
       <p>
-        <span className="tracker__info__secondary__kda__section__stats__kill">
+        <span className="tracker__info__main__kda__stats__kill">
           {accountKills}
         </span>{" "}
         /{" "}
-        <span className="tracker__info__secondary__kda__section__stats__death">
+        <span className="tracker__info__main__kda__stats__death">
           {accountDeath}
         </span>{" "}
         /{" "}
-        <span className="tracker__info__secondary__kda__section__stats__assist">
+        <span className="tracker__info__main__kda__stats__assist">
           {accountAssist}
         </span>
       </p>
     </div>
-  </section>
+  </div>
   )
 }
 

@@ -1,12 +1,10 @@
 .radialchart{
-    & h3{
-        font-size: 1.4rem;
-        position: relative;
-        text-align: center;
-        top: 62px;
+    cursor: pointer;
+    & >  .recharts-pie{
+        cursor: pointer;
     }
     & > div {
         position: relative;
-        top: -7px;
+        top: -5px;
     }
 }

@@ -18,7 +18,8 @@ import supportIcon from "../assets/images/paladins_roles_icon/Class_Support_Icon
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 // File
-import { champions_data } from "../data/champions_data.js";
+import { champions_data } from "../data/champions_data";
+import { all_champion_list } from "../data/all_champions";
 
 // Helper
 import SessionLoader from "../helper/SessionLoader";
@@ -33,7 +34,6 @@ function ChampionPage() {
   }
   const location = useLocation();
 
-
   const champion: any = location.state;
   // All the cards and legendary of the champion
   const [championCards, setChampionCards] = useState<any>();
@@ -42,19 +42,6 @@ function ChampionPage() {
   const data: any = champions_data.champions.filter((champions: any) => {
     return champions.name === champion.paladins_champion.Name;
   });
-
-  useEffect(() => {
-    if (currentSession !== "") {
-      // Get the information of the champion with its id
-      getChampionCards(currentSession, champion.paladins_champion.id).then(
-        (championscards) => {
-          if (championscards !== undefined) {
-            setChampionCards(championscards);
-          }
-        }
-      );
-    }
-  }, [currentSession]);
 
   // Link the class of the champion to its icon
   var icon;
@@ -92,6 +79,16 @@ function ChampionPage() {
   // Description Legendary Cards
   var categorie = "";
   var description = "";
+
+  if (championCards == undefined && currentSession) {
+    getChampionCards(currentSession, champion.paladins_champion.id).then(
+      (championscards) => {
+        if (championscards !== undefined && championscards.length > 0) {
+          setChampionCards(championscards);
+        }
+      }
+    );
+  }
 
   // Sort Common Cards
   var commonCards: Array<any> = [];
@@ -217,7 +214,7 @@ function ChampionPage() {
       </section>
     );
   } else {
-    return <div className="loader">Chargement...</div>
+    return <div className="loader">Chargement...</div>;
   }
 }
 

@@ -156,7 +156,7 @@ function Tracker() {
           </label>
         </form>
 
-        <TrackerMainInfo player={player[0]} />
+        <TrackerMainInfo player={player[0]} championRank={playerChampionRank} />
         <section className="tracker__info">
           <TrackerSecondaryInfo
             player={player[0]}

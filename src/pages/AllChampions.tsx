@@ -21,9 +21,9 @@ import SearchIcon from "@mui/icons-material/Search";
 
 function AllChampionsPage() {
   // Load the Session
-  var currentSession : any;
+  var currentSession: any;
   try {
-    currentSession = SessionLoader()
+    currentSession = SessionLoader();
   } catch (error) {
     console.log(error);
   }
@@ -46,21 +46,27 @@ function AllChampionsPage() {
         });
       } catch (error) {
         SetFilterData(all_champion_list.champions_list);
-        dispatch(setChampionList({ championList: all_champion_list.champions_list }));
+        dispatch(
+          setChampionList({ championList: all_champion_list.champions_list })
+        );
         console.log(error);
       }
     }
     // if there is a champion data then just reset the filter
     else {
       SetFilterData(champion.championList);
-      if(champion.championList.length == 1) {
-        dispatch(setChampionList({ championList: all_champion_list.champions_list }));
+      if (champion.championList.length == 1) {
+        dispatch(
+          setChampionList({ championList: all_champion_list.champions_list })
+        );
       }
     }
   }, [currentSession]);
 
-  if(champion == undefined || champion.championList == null){
-    dispatch(setChampionList({ championList: all_champion_list.champions_list }));
+  if (champion == undefined || champion.championList == null) {
+    dispatch(
+      setChampionList({ championList: all_champion_list.champions_list })
+    );
     SetFilterData(all_champion_list.champions_list);
   }
 
@@ -174,8 +180,14 @@ function AllChampionsPage() {
             <button onClick={(e) => updateFilter("Soutien", e)}>Healer</button>
           </div>
         </div>
+        <div className="champion__grid">
+          <div className="loader">
+            <div className="loader__ring"></div>
+            <span className="loader__text">Chargement...</span>
+          </div>
+        </div>
       </div>
-    )
+    );
   }
 }
 

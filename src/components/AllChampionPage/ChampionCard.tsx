@@ -33,7 +33,7 @@ function Champion_Card({ champion_image, champion, filter }: Props) {
   if (filter === false) {
     return (
       <div className="champion__grid__card card__nofiltered">
-        <Link to={`/${champion.Name}`} state={{ paladins_champion: champion}}>
+        <Link to={`/champions/${champion.Name}`} state={{ paladins_champion: champion}}>
           <img src={champion_image} alt="" className="champion__grid__card__championimage" />
           <div>
             <img src={icon} alt="" className="champion__grid__card__classicon" />
@@ -45,7 +45,7 @@ function Champion_Card({ champion_image, champion, filter }: Props) {
   } else {
     return (
         <div className="champion__grid__card">
-        <Link to={'/champions/'+ champion.Name} state={{ paladins_champion: champion }}>
+        <Link to={`/champions/${champion.Name}`} state={{ paladins_champion: champion }}>
           <img src={champion_image} alt="" className="champion__grid__card__championimage" />
           <div>
             <img src={icon} alt="" className="champion__grid__card__classicon" />
