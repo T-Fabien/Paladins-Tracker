@@ -193,7 +193,7 @@ header .navbar .navbar__burger {
     margin: 0;
     flex-direction: column;
     justify-content: center;
-    background-color: darkred;
+    background-color: #23252c;
   }
   header .navbar .navbar__content li {
     padding: 8px 0;
@@ -273,7 +273,7 @@ header .navbar .navbar__burger {
     margin: 0;
     flex-direction: column;
     justify-content: center;
-    background-color: darkred;
+    background-color: #23252c;
   }
   header .navbar .navbar__content li a {
     font-size: 6vw;
@@ -526,7 +526,7 @@ header .navbar .navbar__burger {
   margin-top: 100px;
 }
 .under_construction img {
-  width: 750px;
+  width: 80vw;
 }
 
 .champion__grid {

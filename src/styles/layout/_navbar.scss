@@ -153,7 +153,7 @@ header {
         margin: 0;
         flex-direction: column;
         justify-content: center;
-        background-color: darkred;
+        background-color: $dark;
         & li{
           padding: 8px 0;
         }
@@ -240,7 +240,7 @@ header {
         margin: 0;
         flex-direction: column;
         justify-content: center;
-        background-color: darkred;
+        background-color: $dark;
         & li a {
           font-size: 6vw;
           padding: 5px 10px;
