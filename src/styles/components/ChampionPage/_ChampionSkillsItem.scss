@@ -20,3 +20,90 @@
   .light_skills .champion__page__skills__button__container__text {
     background-color: $blue;
   }
+
+  @media screen and (max-width: 1440px) {
+    .champion__page__skills__button__container {
+      display: block;
+      &__image {
+          width: 96px;
+        }
+        &__text {
+          font-size: 1rem;
+          padding: 5px 10px;
+          margin: 20px auto 0 auto;
+        }
+    }
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .champion__page__skills__button__container {
+      display: block;
+      &__image {
+          width: 80px;
+        }
+        &__text {
+          font-size: 1rem;
+          padding: 2px 10px;
+          margin: 20px auto 0 auto;
+        }
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .champion__page__skills__button__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 125px;
+
+      &__image {
+          width: 64px;
+        }
+        &__text {
+          font-size: 1rem;
+          padding: 2px 8px;
+          max-width: 64px;
+          margin: 20px auto 0 auto;
+        }
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .champion__page__skills__button__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 92px;
+      &__image {
+          width: 48px;
+        }
+        &__text {
+          font-size: 0.75rem;
+          padding: 2px 8px;
+          max-width: 50px;
+          margin: 15px auto 0 auto;
+        }
+    }
+  }
+  
+  @media screen and (max-width: 425px) {
+    .champion__page__skills__button__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 85px;
+
+      &__image {
+          width: 40px;
+        }
+        &__text {
+          font-size: 0.75rem;
+          padding: 2px 8px;
+          max-width: 50px;
+          margin: 15px auto 0 auto;
+        }
+    }
+  }

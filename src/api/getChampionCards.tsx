@@ -23,23 +23,6 @@ export const getChampionCards = async (sessionId: any, championId: any) => {
     championId +
     "/3"
   ).then((response) => {
-    console.log("https://api.paladins.com/paladinsapi.svc/getchampioncardsjson/" +
-    import.meta.env.VITE_DEV_ID +
-    "/" +
-    md5(
-      import.meta.env.VITE_DEV_ID +
-        "getchampioncards" +
-        import.meta.env.VITE_DEV_KEY +
-        timestamp
-    ) +
-    "/" +
-    sessionId +
-    "/" +
-    timestamp +
-    "/" +
-    championId +
-    "/3");
-    
     try {
       // If Server Error
       if (response.status >= 400) {

@@ -51,6 +51,213 @@
             font-size: 22px;
             position: relative;
             top: 7px;
+            width: max-content;
+        }
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .champion__page__skills__container{
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 40px 2.5% 0 2.5%;
+        &__description{
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            width: 85%;
+            justify-content: center;
+            padding: 0;
+            margin: 15px 15px 15px 0;
+            &__img{
+                height: 160px;
+                width: 160px;
+                border-radius: 5px;
+            }
+        }
+        &__description__content{
+            &__title{
+                font-size: 1.75rem;
+                margin: 10px 0;
+                color: $white;
+            }
+            &__dmgtype{
+                font-size: 1.35rem;
+                margin: 10px 0 10px 0;
+                color: $blue;
+            }
+            &__text{
+                font-size: 1rem;
+                margin: 10px 0;
+                color: $white;
+            }
+        }
+        &__cooldown{
+            display: flex;
+            flex-direction: row;
+            color: $white;
+            margin: 30px 15px 15px 0;
+            & svg {
+                margin-right: 5px;
+                width: 40px;
+                height: 40px;
+            }
+            & p {
+                font-size: 1.4rem;
+                position: relative;
+                top: 7px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .champion__page__skills__container{
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        &__description{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 15px;
+            margin: 10px 0 0 0;
+            &__img{
+                height: 96px;
+                width: 96px;
+            }
+        }
+        &__description__content{
+            &__title{
+                font-size: 1.75rem;
+                margin: 10px 0;
+                text-align: center;
+            }
+            &__dmgtype{
+                font-size: 1.25rem;
+                margin: 5px 0 10px 0;
+                text-align: center;
+            }
+            &__text{
+                font-size: 0.85rem;
+                line-height: 1.25;
+                margin: 5px 0;
+            }
+        }
+        &__cooldown{
+            display: flex;
+            margin: 118px 10px 0 0;
+            & svg {
+                width: 24px;
+                height: 24px;
+            }
+            & p {
+                font-size: 1.15rem;
+                position: relative;
+                top: 3px;
+                width: max-content;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .champion__page__skills__container{
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        &__description{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 15px;
+            margin: 10px 0 0 0;
+            &__img{
+                height: 80px;
+                width: 80px;
+            }
+        }
+        &__description__content{
+            &__title{
+                font-size: 1.75rem;
+                margin: 10px 0;
+                text-align: center;
+            }
+            &__dmgtype{
+                font-size: 1.25rem;
+                margin: 5px 0 10px 0;
+                text-align: center;
+            }
+            &__text{
+                font-size: 0.85rem;
+                line-height: 1.25;
+                margin: 5px 0;
+            }
+        }
+        &__cooldown{
+            display: flex;
+            margin: 102px 10px 0 0;
+            & svg {
+                width: 24px;
+                height: 24px;
+            }
+            & p {
+                font-size: 1.15rem;
+                position: relative;
+                top: 3px;
+                width: max-content;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .champion__page__skills__container{
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 0;
+        &__description{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 15px;
+            margin: 0;
+            &__img{
+                height: 80px;
+                width: 80px;
+            }
+        }
+        &__description__content{
+            &__title{
+                font-size: 1.5rem;
+                margin: 10px 0;
+                text-align: center;
+            }
+            &__dmgtype{
+                font-size: 1.25rem;
+                margin: 5px 0 10px 0;
+                text-align: center;
+            }
+            &__text{
+                font-size: 0.85rem;
+                line-height: 1.25;
+                margin: 5px 0;
+            }
+        }
+        &__cooldown{
+            display: none;
         }
     }
 }

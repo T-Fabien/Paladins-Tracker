@@ -40,7 +40,7 @@ function HeroBanner({
               <p className="champion__page__presentation__description__class__icon__role champion__page__presentation__text">{role}</p>
             </div>
             <p className="champion__page__presentation__health champion__page__presentation__text">
-              Point de Vie : {champion_health}
+              Point de Vie : {champion_health} HP
             </p>
             <p className="champion__page__presentation__difficulty champion__page__presentation__text">
               Difficulté : 

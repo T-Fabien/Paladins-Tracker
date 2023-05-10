@@ -7,3 +7,44 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 1440px) {
+  .champion__page {
+    &__skills__title {
+      font-size: 3.25rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .champion__page {
+    &__skills__title {
+      font-size: 3rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .champion__page {
+    &__skills__title {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .champion__page {
+    &__skills__title {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .champion__page {
+    &__skills__title {
+      margin-top: 20px;
+      font-size: 2rem;
+    }
+  }
+}
