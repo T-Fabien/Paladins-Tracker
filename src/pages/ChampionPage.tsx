@@ -163,14 +163,15 @@ function ChampionPage() {
             })}
         </div>
         {championCards != null && championCards.length > 0 && (
-          <table className="champion__page__cards__common__table">
+          <div className="champion__page__cards__common__table">
+          <table className="champion__page__cards__common__table__container">
             <thead>
               <tr>
                 <th> Nom </th>
                 <th> Image </th>
                 <th> Catégorie </th>
                 <th> Description </th>
-                <th> Coolodwn </th>
+                <th> Cooldown </th>
               </tr>
             </thead>
             <tbody>
@@ -210,6 +211,7 @@ function ChampionPage() {
               })}
             </tbody>
           </table>
+          </div>
         )}
       </section>
     );
