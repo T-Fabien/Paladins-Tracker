@@ -7,7 +7,7 @@ header {
   padding: 0 2.5%;
   z-index: 5;
 
-  & p {
+  & .title-link {
     align-items: center;
     color: $white;
     display: flex;
@@ -15,6 +15,7 @@ header {
     height: 50px;
     width: 300px;
     z-index: 6;
+    text-decoration: none;
   }
 
   .navbar {
@@ -97,7 +98,7 @@ header {
 
 @media screen and (max-width: 1440px) {
   header {
-    & p {
+    & .title-link {
       font-size: 1.6rem;
     }
     & .navbar {
@@ -111,7 +112,7 @@ header {
 
 @media screen and (max-width: 1024px) {
   header {
-    & p {
+    & .title-link {
       font-size: 1.5rem;
       width: 380px;
       margin-left: -5px;
@@ -132,7 +133,7 @@ header {
 
 @media screen and (max-width: 767px) {
   header {
-    & p {
+    & .title-link {
       width: 280px;
       font-size: 1.5rem;
     }
@@ -221,7 +222,7 @@ header {
 }
 @media screen and (max-width: 425px) {
   header {
-    & p {
+    & .title-link {
       font-size: 5vw;
     }
     & .navbar {

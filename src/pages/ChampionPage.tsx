@@ -32,22 +32,32 @@ function ChampionPage() {
   } catch (error) {
     console.log(error);
   }
-  const location = useLocation();
 
-  const champion: any = location.state;
+  const location = useLocation();
+  var champion: any;
+
+  if (location.state == null) {
+    const championFilter = all_champion_list.champions_list.filter((champions: any) => {
+      return champions.Name.toUpperCase() === location.pathname.substring(11).toUpperCase();
+    });
+    champion = championFilter[0];
+  } else {
+    champion = location.state.paladins_champion
+  }
+
   // All the cards and legendary of the champion
   const [championCards, setChampionCards] = useState<any>();
 
   // Get the information (Difficulties) from the champion
   const data: any = champions_data.champions.filter((champions: any) => {
-    return champions.name === champion.paladins_champion.Name;
+    return champions.name === champion.Name;
   });
 
   // Link the class of the champion to its icon
   var icon;
   var role;
 
-  switch (champion.paladins_champion.Roles) {
+  switch (champion.Roles) {
     case "Paladins Dégâts":
       icon = damageIcon;
       role = "Dégâts";
@@ -81,7 +91,7 @@ function ChampionPage() {
   var description = "";
 
   if (championCards == undefined && currentSession) {
-    getChampionCards(currentSession, champion.paladins_champion.id).then(
+    getChampionCards(currentSession, champion.id).then(
       (championscards) => {
         if (championscards !== undefined && championscards.length > 0) {
           setChampionCards(championscards);
@@ -105,18 +115,19 @@ function ChampionPage() {
   }
 
   if (champion !== undefined) {
+    
     return (
       <section className="champion__page">
         <HeroBanner
-          champion_name={champion.paladins_champion.Name}
-          champion_lore={champion.paladins_champion.Lore}
-          champion_health={champion.paladins_champion.Health}
+          champion_name={champion.Name}
+          champion_lore={champion.Lore}
+          champion_health={champion.Health}
           stars={stars}
           icon={icon}
           role={role}
         />
         <h2 className="champion__page__skills__title"> Capacités </h2>
-        <ChampionSkills champion={champion.paladins_champion} />
+        <ChampionSkills champion={champion} />
 
         <div className="champion__page__cards__legendary">
           {championCards &&
@@ -190,7 +201,7 @@ function ChampionPage() {
                 }
                 return (
                   <tr key={championcard.card_id1}>
-                    <td className="champion__page__cards__common__table__name">
+                    <td className="champion__page__cards__common__table__container__name">
                       {championcard.card_name}
                     </td>
                     <td>
@@ -199,7 +210,7 @@ function ChampionPage() {
                     <td>{categorie}</td>
                     <td>{description}</td>
                     {championcard.recharge_seconds > 0 ? (
-                      <td className="champion__page__cards__common__table__cooldown">
+                      <td className="champion__page__cards__common__table__container__cooldown">
                         <span>{championcard.recharge_seconds} </span>{" "}
                         <AccessTimeIcon />
                       </td>

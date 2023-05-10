@@ -60,7 +60,7 @@ header {
   padding: 0 2.5%;
   z-index: 5;
 }
-header p {
+header .title-link {
   align-items: center;
   color: #FFFFFF;
   display: flex;
@@ -68,6 +68,7 @@ header p {
   height: 50px;
   width: 300px;
   z-index: 6;
+  text-decoration: none;
 }
 header .navbar {
   display: flex;
@@ -145,7 +146,7 @@ header .navbar .navbar__burger {
 }
 
 @media screen and (max-width: 1440px) {
-  header p {
+  header .title-link {
     font-size: 1.6rem;
   }
   header .navbar .navbar__content li a {
@@ -154,7 +155,7 @@ header .navbar .navbar__burger {
   }
 }
 @media screen and (max-width: 1024px) {
-  header p {
+  header .title-link {
     font-size: 1.5rem;
     width: 380px;
     margin-left: -5px;
@@ -172,7 +173,7 @@ header .navbar .navbar__burger {
   }
 }
 @media screen and (max-width: 767px) {
-  header p {
+  header .title-link {
     width: 280px;
     font-size: 1.5rem;
   }
@@ -255,7 +256,7 @@ header .navbar .navbar__burger {
   }
 }
 @media screen and (max-width: 425px) {
-  header p {
+  header .title-link {
     font-size: 5vw;
   }
   header .navbar {

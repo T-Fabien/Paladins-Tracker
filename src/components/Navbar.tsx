@@ -11,7 +11,9 @@ function Navbar() {
 
   return (
     <header>
-      <p>Paladins-Tracker</p>
+      <NavLink to="/" end className="title-link" onClick={handleShowMenu}>
+              Paladins Tracker
+            </NavLink>
       <nav className={`navbar ${showMenu ? "showmenu" : "hidemenu"}`}>
         <ul className="navbar__content">
           <li>
