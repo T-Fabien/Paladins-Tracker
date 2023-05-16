@@ -507,17 +507,35 @@ header .navbar .navbar__burger {
   left: -30px;
   top: 7px;
 }
+.tracker__dataTableFilter {
+  margin-bottom: 20px;
+}
+.tracker__dataTableFilter button {
+  background: #02abff;
+  border-color: #02abff;
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: 0px 10px 20px -6px rgba(0, 0, 0, 0.12);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 10px 0 0;
+  padding: 10px 14px;
+}
+.tracker__dataTableFilter button:hover {
+  outline: none;
+}
+.tracker__dataTableFilter .activeDataTable {
+  background-color: #0079b5;
+}
 .tracker__info {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin: 20px 5% 0 5%;
 }
-.tracker__info__match {
-  width: 80%;
-  border: 1px solid #008ace;
-  box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
-  border-radius: 5px;
+.tracker__info > div {
+  width: 100%;
 }
 
 /* Components */
@@ -1434,146 +1452,146 @@ header .navbar .navbar__burger {
   color: black;
 }
 
-.tracker__info__main {
-  border: 2px solid #008ace;
-  box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
-  border-radius: 10px;
+.tracker__main__info {
   display: flex;
   justify-content: space-between;
-  padding: 8px;
   margin: 20px 5% 0 5%;
-  height: 180px;
+  height: 150px;
 }
-.tracker__info__main > div {
+.tracker__main__info > div {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin: 0 10px;
+  border: 2px solid #008ace;
+  box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
+  border-radius: 10px;
+  width: calc(25% - 30px);
 }
-.tracker__info__main h3 {
+.tracker__main__info h3 {
   font-size: 1.3rem;
 }
-.tracker__info__main__avatar > img {
-  width: 160px;
-  height: 160px;
-}
-.tracker__info__main__account {
-  margin-left: 15px;
-}
-.tracker__info__main__account > h2 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-.tracker__info__main__account > h2 span {
-  font-size: 1rem;
-  font-weight: 100;
-}
-.tracker__info__main__account > p {
-  line-height: 20px;
-}
-.tracker__info__main__kda {
-  flex-direction: column;
-  text-align: center;
-}
-.tracker__info__main__kda__ratio p {
-  font-size: 1.15rem;
-  margin: 10px 0 5px 0;
-}
-.tracker__info__main__kda__ratio p span {
-  color: #2cb42c;
-  font-size: 1.3rem;
-  font-weight: 600;
-}
-.tracker__info__main__kda__stats p span {
-  font-size: 1.2rem;
-}
-.tracker__info__main__kda__stats__kill {
-  color: #2cb42c;
-}
-.tracker__info__main__kda__stats__death {
-  color: #ee4134;
-}
-.tracker__info__main__winlose__ratio {
+.tracker__main__info__winlose__ratio {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 0 40px;
 }
-.tracker__info__main__winlose__ratio .radialchart h3 {
+.tracker__main__info__winlose__ratio .radialchart h3 {
   position: relative;
   text-align: center;
   top: -5px;
   font-size: 1.3rem;
 }
-.tracker__info__main__rank {
-  flex-direction: column;
-  align-items: center;
+
+.tracker__main__info__account__avatar > img {
+  width: 128px;
+  height: 128px;
+  border-radius: 5px;
 }
-.tracker__info__main__rank > p {
+.tracker__main__info__account__info {
+  padding: 12px 0 0 10px;
+  align-self: start;
+}
+.tracker__main__info__account__info > h2 {
   font-size: 1.3rem;
+  font-weight: 600;
   margin-bottom: 10px;
 }
-.tracker__info__main__rank > img {
-  width: 112px;
+.tracker__main__info__account__info > h2 span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.tracker__main__info__account__info > h3 {
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin-bottom: 8px;
+}
+.tracker__main__info__account__info > p {
+  font-size: 0.95rem;
+  line-height: 20px;
 }
 
-.tracker__info__secondary {
-  width: calc(25% - 30px);
-  margin-right: 30px;
+.tracker__main__info__roles > table {
+  width: 100%;
 }
-.tracker__info__secondary > section {
-  margin-bottom: 20px;
+.tracker__main__info__roles > table thead tr th {
+  padding-bottom: 10px;
+}
+.tracker__main__info__roles > table td {
+  text-align: center;
+}
+.tracker__main__info__roles > table tr td {
+  padding: 4px 0;
+}
+
+.tracker__main__info__kda {
+  flex-direction: column;
+  text-align: center;
+}
+.tracker__main__info__kda__ratio p {
+  font-size: 1.15rem;
+  margin: 10px 0 5px 0;
+}
+.tracker__main__info__kda__ratio p span {
+  color: #2cb42c;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.tracker__main__info__kda__stats p span {
+  font-size: 1.2rem;
+}
+.tracker__main__info__kda__stats__kill {
+  color: #2cb42c;
+}
+.tracker__main__info__kda__stats__death {
+  color: #ee4134;
+}
+
+.tracker__actual__season {
+  margin: 0 30px 20px 0;
   border: 2px solid #008ace;
   box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
   border-radius: 5px;
   text-align: center;
+  width: calc(25% - 30px);
+  height: -moz-max-content;
+  height: max-content;
 }
-.tracker__info__secondary > section > h3 {
+.tracker__actual__season > h3 {
   border-bottom: 2px solid #02abff;
   margin: 10px 0;
   padding-bottom: 10px;
   font-size: 1.4rem;
   text-align: center;
 }
-.tracker__info__secondary > section > div {
+.tracker__actual__season > div {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5px 20px;
 }
-.tracker__info__secondary__actual__season p {
+.tracker__actual__season p {
   font-size: 1.15rem;
 }
-.tracker__info__secondary__actual__season__rank {
+.tracker__actual__season__rank {
   align-items: center;
 }
-.tracker__info__secondary__actual__season__rank > p {
+.tracker__actual__season__rank > p {
   font-size: 1.3rem;
   margin-top: 5px;
 }
-.tracker__info__secondary__actual__season__rank > img {
+.tracker__actual__season__rank > img {
   width: 96px;
 }
-.tracker__info__secondary__actual__season__points {
+.tracker__actual__season__points {
   margin: 0 0 10px 0;
 }
-.tracker__info__secondary__actual__season__percentage {
+.tracker__actual__season__percentage {
   position: relative;
   top: -15px;
   margin-bottom: 0px;
 }
-.tracker__info__secondary__actual__season__percentage .radialchart h3 {
+.tracker__actual__season__percentage .radialchart h3 {
   font-size: 1.25rem;
-}
-.tracker__info__secondary__roles > .recharts-wrapper {
-  padding: 0px;
-  margin: auto;
-}
-.tracker__info__secondary__roles .test {
-  font-size: 1rem;
-  font-weight: 300;
-  text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8), -3px 0px 7px rgba(0, 0, 0, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
 }
 
 .match__preview__Win {
@@ -1672,7 +1690,7 @@ header .navbar .navbar__burger {
   box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
   -webkit-box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
   -moz-box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
-  width: 80%;
+  width: 100%;
 }
 .tracker__info__datatable__match {
   height: 50px;

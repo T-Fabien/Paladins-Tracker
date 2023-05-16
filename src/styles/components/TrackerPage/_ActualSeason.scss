@@ -1,12 +1,11 @@
-.tracker__info__secondary {
-  width: calc(25% - 30px);
-  margin-right: 30px;
-  & > section {
-    margin-bottom: 20px;
+.tracker__actual__season {
+    margin: 0 30px 20px 0;
     border: 2px solid $blue;
     box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
     border-radius: 5px;
     text-align: center;
+    width: calc(25% - 30px);
+    height: max-content;
     & > h3 {
       border-bottom: 2px solid $lightblue;
       margin: 10px 0;
@@ -20,8 +19,6 @@
       align-items: center;
       padding: 5px 20px;
     }
-  }
-  &__actual__season {
     & p {
       font-size: 1.15rem;
     }
@@ -49,16 +46,3 @@
       }
     }
   }
-  &__roles{
-    & > .recharts-wrapper {
-      padding: 0px ;
-      margin: auto;
-    }
-    & .test {
-      font-size: 1rem;
-      font-weight: 300;
-      text-shadow: 3px 0px 7px rgba(0, 0, 0, 0.8),
-      -3px 0px 7px rgba(0, 0, 0, 0.8), 0px 4px 7px rgba(0, 0, 0, 0.8);
-    }
-  }
-}

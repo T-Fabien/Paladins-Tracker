@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
 type Props = {
   championRank: any;
@@ -44,6 +44,11 @@ function TrackerRoleSection({ championRank }: Props) {
   var countTankTime: number = 0;
   var countSupportTime: number = 0;
 
+  var countDmgWins: number = 0;
+  var countFlankWins: number = 0;
+  var countTankWins: number = 0;
+  var countSupportWins: number = 0;
+
   championRank.map((championStats: any) => {
     championRole = champion.championList
       .filter((championInfo: any) =>
@@ -54,15 +59,19 @@ function TrackerRoleSection({ championRank }: Props) {
     switch (championRole[0]) {
       case "Paladins Dégâts":
         countDamageTime += championStats.Wins + championStats.Losses;
+        countDmgWins += championStats.Wins
         break;
       case "Paladins Flanc":
         countFlankTime += championStats.Wins + championStats.Losses;
+        countFlankWins += championStats.Wins
         break;
       case "Paladins Tank":
         countTankTime += championStats.Wins + championStats.Losses;
+        countTankWins +=championStats.Wins
         break;
       case "Paladins Soutien":
         countSupportTime += championStats.Wins + championStats.Losses;
+        countSupportWins += championStats.Wins
         break;
       default:
         break;
@@ -70,29 +79,45 @@ function TrackerRoleSection({ championRank }: Props) {
   });
 
   const data = [
-    { name: "Heal", value: countSupportTime, fill: "#E86100" },
-    { name: "Tank", value: countTankTime, fill: "#800020" },
-    { name: "Flank", value: countFlankTime, fill: "#007B00" },
-    { name: "Dps", value: countDamageTime, fill: "#0088FE" },
+    { name: "Dps", value: countDamageTime ,winrate: countDmgWins/countDamageTime},
+    { name: "Flank", value: countFlankTime ,winrate: countFlankWins/countFlankTime},
+    { name: "Tank", value: countTankTime ,winrate: countTankWins/countTankTime},
+    { name: "Heal", value: countSupportTime ,winrate: countSupportWins/countSupportTime},
   ];
 
+  const total = countDamageTime + countFlankTime + countTankTime + countSupportTime
+
   return (
-    <section className="tracker__info__secondary__roles">
-      <h3> Rôles jouée</h3>
-      <PieChart width={360} height={250}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          outerRadius={90}
-          dataKey="value"
-          startAngle={90}
-          endAngle={450}
-          labelLine={false}
-          label={renderCustomizedLabel}
-        />
-      </PieChart>
-    </section>
+    <div className="tracker__main__info__roles">
+      <table>
+        <thead>
+          <tr>
+            <th>Rôles</th>
+            <th>Nb de Games</th>
+            <th>% de pick</th>
+            <th>Winrate</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {
+          data.sort(function (a, b) {
+            return b.value - a.value;
+          }).map((role, key) => {
+            return (
+              <tr key={key}>
+              <td>{role.name}</td>
+              <td>{role.value}</td>
+              <td>{((role.value / total) *100).toFixed(1) + " %"}</td>
+              <td>{(role.winrate*100).toFixed(1)+ " %"}</td>
+              </tr>
+            )
+          })
+        }
+        </tbody>
+      </table>
+
+    </div>
   );
 }
 

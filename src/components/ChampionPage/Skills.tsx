@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 
-import ChampionSkillItem from "./ChampionSkillsItem";
-import ChampionSkillDesc from "./ChampionSkillsItemDesc";
+import ChampionSkillItem from "./SkillsItem";
+import ChampionSkillDesc from "./SkillsItemDesc";
 
 type Props = {
     champion : any;

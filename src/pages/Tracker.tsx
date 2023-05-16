@@ -13,8 +13,8 @@ import { getMatchHistory } from "../api/getMatchHistory";
 import { getChampionRanks } from "../api/getChampionRanks";
 
 // Component
-import TrackerMainInfo from "../components/TrackerPage/TrackerMainInfo";
-import TrackerSecondaryInfo from "../components/TrackerPage/TrackerSecondaryInfo";
+import TrackerMainInfo from "../components/TrackerPage/MainInfo";
+import TrackerSecondaryInfo from "../components/TrackerPage/ActualSeason";
 
 // Redux
 import { setSessionId } from "../redux/session";
@@ -22,8 +22,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Icons
 import SearchIcon from "@mui/icons-material/Search";
-import DataTable from "../components/TrackerPage/DataTable";
+import MatchDataTable from "../components/TrackerPage/MatchDataTable";
 import { setChampionList } from "../redux/champion";
+import ChampionDataTable from "../components/TrackerPage/ChampionDataTable";
 
 function Tracker() {
   const session = useSelector((state: any) => state.session.value);
@@ -57,7 +58,6 @@ function Tracker() {
           getChampionRanks(sessionId, playerdata[0].ActivePlayerId).then(
             (championRank) => {
               setPlayerChampionRank(championRank);
-              console.log(championRank);
             }
           );
           getMatchHistory(sessionId, playerdata[0].ActivePlayerId).then(
@@ -128,6 +128,28 @@ function Tracker() {
     }
   };
 
+  const updateDataTable = (tableName: string, e :any) => {
+    var showTable = document.getElementById(tableName)
+    document.getElementsByClassName("activeDataTable")[0].classList.remove("activeDataTable");
+    if (showTable) {
+      // Afficher la table
+      showTable.style.display = "table";
+      e.target.classList.toggle("activeDataTable");
+      
+      // Récupérer toutes les autres tables
+      var tables = document.getElementsByTagName("table");
+      
+      // Parcourir les autres tables et les masquer
+      for (var i = 0; i < tables.length; i++) {
+        var table = tables[i];
+        
+        if (table.id !== tableName) {
+          table.style.display = "none";
+        }
+      }
+    }
+  }
+
   if (
     player !== undefined &&
     player.ret_msg == null &&
@@ -162,7 +184,15 @@ function Tracker() {
             player={player[0]}
             championRank={playerChampionRank}
           />
-          <DataTable data={matchList} championList={champion.championList} />
+          <div>
+          <div className="tracker__dataTableFilter">
+        <button onClick={(e) => updateDataTable("match__dataTable", e)} className="activeDataTable">Historique</button>
+        <button onClick={(e) => updateDataTable("champion__dataTable", e)}>Champion</button>
+
+        </div>
+          <MatchDataTable data={matchList} championList={champion.championList} />
+          <ChampionDataTable data={playerChampionRank} championList={champion.championList} />
+          </div>
         </section>
       </div>
     );

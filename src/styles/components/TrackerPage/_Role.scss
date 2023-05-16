@@ -1,0 +1,16 @@
+.tracker__main__info__roles{
+  & > table {
+    width: 100%;
+
+    & thead tr th  {
+      padding-bottom: 10px;
+    }
+    & td {
+      text-align: center;
+      
+    }
+    & tr td{
+      padding: 4px 0;
+    }
+  }
+  }

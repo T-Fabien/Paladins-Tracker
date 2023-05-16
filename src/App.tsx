@@ -14,7 +14,7 @@ import UnderConstruction from "./components/UnderConstruction";
 // @Pages
 import HomePage from './pages/Homepage';
 import AllChampionsPage from './pages/AllChampions';
-import ChampionPage from "./pages/ChampionPage";
+import ChampionPage from "./pages/Champion";
 import Tierlist from "./pages/Tierlist";
 import Tracker from "./pages/Tracker";
 

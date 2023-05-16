@@ -1,0 +1,29 @@
+.tracker__main__info{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 5% 0 5%;
+  height: 150px;
+  & > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 2px solid $blue;
+    box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
+    border-radius: 10px;
+    width: calc(25% - 30px)
+  }
+  & h3{
+    font-size: 1.3rem;
+  }
+  &__winlose__ratio {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    & .radialchart h3 {
+      position: relative;
+      text-align: center;
+      top: -5px;
+      font-size: 1.3rem;
+    }
+  }
+}

@@ -10,13 +10,14 @@ import { useState } from "react";
 import TableFooter from "@mui/material/TableFooter";
 import { TablePagination } from "@mui/material";
 import HorizontalBarChart from "../Recharts/HorizontalBarChart";
+import KdaHorizontalBar from "../Recharts/KdaHorizontalBar";
 
 type Props = {
   data: any;
   championList: any;
 };
 
-function DataTable({ data, championList }: Props) {
+function MatchDataTable({ data, championList }: Props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -51,6 +52,7 @@ function DataTable({ data, championList }: Props) {
           minWidth: 650,
         }}
         aria-label="simple table"
+        id="match__dataTable"
       >
         <TableHead>
           <TableRow
@@ -187,9 +189,10 @@ function DataTable({ data, championList }: Props) {
                         {match.Assists}
                       </span>
                     </p>
-                    <HorizontalBarChart
-                      positiveValue={match.Kills + 0.5 * match.Assists}
-                      negativeValue={match.Deaths}
+                    <KdaHorizontalBar
+                      kill={match.Kills}
+                      assist={match.Assists}
+                      death={match.Deaths}
                       width={140}
                     />
                     <p>
@@ -249,4 +252,4 @@ function DataTable({ data, championList }: Props) {
   );
 }
 
-export default DataTable;
+export default MatchDataTable;

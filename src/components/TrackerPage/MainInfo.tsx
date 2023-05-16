@@ -1,7 +1,10 @@
 import moment from "moment";
 
 import RadialChart from "../Recharts/RadialChart";
-import TrackerKdaSection from "./TrackerKdaSection";
+import TrackerKdaSection from "./KdaSection";
+import TrackerRoleSection from "./RoleSection";
+import Profile from "./Account";
+import HorizontalBarChart from "../Recharts/HorizontalBarChart";
 
 type Props = {
   player: any;
@@ -77,50 +80,20 @@ function TrackerMainInfo({ player, championRank }: Props) {
   accountKDA = ((accountKills + 0.5 * accountAssist) / accountDeath).toFixed(2);
 
   return (
-    <section className="tracker__info__main">
-      <div>
-        <div className="tracker__info__main__avatar">
-          <img src={player.AvatarURL} alt="Profile Image" />
-        </div>
-        <div className="tracker__info__main__account">
-          <h2>
-            {player.hz_player_name}
-            <span>{" ( " + player.Region + " ) "}</span>
-          </h2>
-          <p> Niveau {player.Level} </p>
-          <p>
-            Compte crée le{" "}
-            {moment(player.Created_Datetime)
-              .locale("fr")
-              .format(`Do MMMM YYYY`)}
-          </p>
-          <p>Temps de jeu total : {player.HoursPlayed} heures</p>
-          <p>
-            Connecté {moment(player.Last_Login_Datetime).locale("fr").fromNow()}
-          </p>
-        </div>
-      </div>
+    <section className="tracker__main__info">
+      <Profile player={player}/>
       <TrackerKdaSection
         accountKDA={accountKDA}
         accountKills={accountKills}
         accountAssist={accountAssist}
         accountDeath={accountDeath}
       />
-
-      <div className="tracker__info__main__winlose__ratio">
-        <RadialChart
-          positiveValue={player.Wins}
-          negativeValue={player.Losses}
-        />
-      </div>
-      <div className="tracker__info__main__rank">
-        {player.RankedKBM.Tier > 0 && (
-          <img
-            src={"/assets/paladins_rank/" + player.RankedKBM.Tier + ".png"}
-            alt=""
-          />
-        )}
-        <p>{tierRank[player.RankedKBM.Tier]}</p>
+      <TrackerRoleSection championRank={championRank}/>
+      <div className="tracker__main__info__winlose__ratio tracker__main__info__kda__stats">
+        <h3>Pourcentages de victoires</h3>
+        <p className="tracker__main__info__kda__ratio" >Pourcentage : <span>{((player.Wins / (player.Wins + player.Losses))*100).toFixed(2)} %</span></p>
+        <HorizontalBarChart positiveValue={player.Wins} negativeValue={player.Losses} width={180}/>
+        <p><span className="tracker__main__info__kda__stats__kill">{player.Wins}</span> / <span className="tracker__main__info__kda__stats__death">{player.Losses}</span></p>
       </div>
     </section>
   );

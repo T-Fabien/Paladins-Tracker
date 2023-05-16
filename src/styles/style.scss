@@ -23,17 +23,23 @@
 
 // Champion Page
 
-@import "./components/ChampionPage/ChampionSkills";
-@import "./components/ChampionPage/ChampionSkillsItem";
-@import "./components/ChampionPage/ChampionSkillsItemDesc";
+@import "./components/ChampionPage/Skills";
+@import "./components/ChampionPage/SkillsItem";
+@import "./components/ChampionPage/SkillsItemDesc";
 @import "./components/ChampionPage/HeroBanner";
 
 // Tierlist Page
 @import "./components/TierlistPage/tierlist";
 
 // Tracker Page
-@import "./components/TrackerPage/TrackerMainInfo";
-@import "./components/TrackerPage/TrackerSecondaryInfo";
+@import "./components/TrackerPage/MainInfo";
+
+@import "./components/TrackerPage/Account";
+@import "./components/TrackerPage/Role";
+@import "./components/TrackerPage/KdaSection";
+
+@import "./components/TrackerPage/ActualSeason";
+
 @import "./components/TrackerPage/matchPreview";
 @import "./components/TrackerPage/DataTable";
 

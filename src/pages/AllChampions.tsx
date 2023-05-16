@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Component
-import AllChampionsGrid from "../components/AllChampionPage/AllChampionsGrid";
+import AllChampionsGrid from "../components/AllChampionPage/ChampionsGrid";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";

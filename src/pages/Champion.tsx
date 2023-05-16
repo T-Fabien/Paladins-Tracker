@@ -6,7 +6,7 @@ import { getChampionCards } from "../api/getChampionCards";
 
 // Component
 import HeroBanner from "../components/ChampionPage/HeroBanner";
-import ChampionSkills from "../components/ChampionPage/ChampionSkills";
+import ChampionSkills from "../components/ChampionPage/Skills";
 
 // Class Icon
 import damageIcon from "../assets/images/paladins_roles_icon/Class_Damage_Icon.png";
