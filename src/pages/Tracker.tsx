@@ -129,24 +129,40 @@ function Tracker() {
   };
 
   const updateDataTable = (tableName: string, e :any) => {
+
+    // Get the new Active DataTable 
     var showTable = document.getElementById(tableName)
+
+
+    // Remove Previous Active DataTable
     document.getElementsByClassName("activeDataTable")[0].classList.remove("activeDataTable");
+
+    
     if (showTable) {
-      // Afficher la table
+      // Active DataTable & Button style
       showTable.style.display = "table";
       e.target.classList.toggle("activeDataTable");
-      
-      // Récupérer toutes les autres tables
-      var tables = document.getElementsByTagName("table");
-      
-      // Parcourir les autres tables et les masquer
-      for (var i = 0; i < tables.length; i++) {
-        var table = tables[i];
-        
-        if (table.id !== tableName) {
-          table.style.display = "none";
-        }
+
+      var hideTable;
+
+      // Remove other DataTable
+      switch (tableName) {
+        case "match__dataTable":
+            hideTable = document.getElementById("champion__dataTable")
+            if(hideTable) {
+              hideTable.style.display = "none"
+            }
+        break;
+        case "champion__dataTable":
+            hideTable = document.getElementById("match__dataTable");
+            if(hideTable) {
+              hideTable.style.display = "none"
+            }
+          break;
+        default:
+          break;
       }
+      
     }
   }
 
