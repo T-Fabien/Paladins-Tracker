@@ -11,8 +11,6 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 
-import { useTable } from "react-table";
-
 type Props = {
   data: any;
   championList: any;
