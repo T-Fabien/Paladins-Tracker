@@ -1,8 +1,8 @@
 .tracker__main__info{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 5% 0 5%;
-  height: 150px;
+  margin: 20px 4% 0 4%;
   & > div {
     align-items: center;
     display: flex;
@@ -10,7 +10,9 @@
     border: 2px solid $blue;
     box-shadow: $blue 0px 1px 6px, $blue 0px 1px 4px;
     border-radius: 10px;
-    width: calc(25% - 30px)
+    width: calc(25% - 30px);
+    min-width: 400px;
+    margin: 10px 5px;
   }
   & h3{
     font-size: 1.3rem;
@@ -25,5 +27,11 @@
       top: -5px;
       font-size: 1.3rem;
     }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .tracker__main__info {
+    justify-content: center;
   }
 }

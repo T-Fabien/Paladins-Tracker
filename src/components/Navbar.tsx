@@ -11,7 +11,8 @@ function Navbar() {
 
   return (
     <header>
-      <NavLink to="/" end className="title-link" onClick={handleShowMenu}>
+      <img src="/assets/logo.png" alt="" />
+      <NavLink to="/" end className="title-link">
               Paladins Tracker
             </NavLink>
       <nav className={`navbar ${showMenu ? "showmenu" : "hidemenu"}`}>
@@ -26,11 +27,7 @@ function Navbar() {
               Champions
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/paladins" end className="link" onClick={handleShowMenu}>
-              News
-            </NavLink>
-          </li>
+
           <li>
             <NavLink to="/tierlist" end className="link" onClick={handleShowMenu}>
               TierList

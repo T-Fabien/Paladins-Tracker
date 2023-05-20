@@ -60,6 +60,10 @@ header {
   padding: 0 2.5%;
   z-index: 5;
 }
+header img {
+  height: 40px;
+  margin-right: 5px;
+}
 header .title-link {
   align-items: center;
   color: #FFFFFF;
@@ -532,12 +536,18 @@ header .navbar .navbar__burger {
 .tracker__info {
   display: flex;
   flex-direction: row;
-  margin: 20px 5% 0 5%;
+  margin: 20px 4% 0 4%;
 }
 .tracker__info > div {
   width: 100%;
 }
 
+@media screen and (max-width: 900px) {
+  .tracker__info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 /* Components */
 .under_construction {
   display: flex;
@@ -553,7 +563,7 @@ header .navbar .navbar__burger {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 2% 5%;
+  margin: 2% 4%;
 }
 .champion__grid__card {
   cursor: pointer;
@@ -919,7 +929,7 @@ header .navbar .navbar__burger {
     height: 85px;
   }
   .champion__page__skills__button__container__image {
-    width: 40px;
+    width: 48px;
   }
   .champion__page__skills__button__container__text {
     font-size: 0.75rem;
@@ -1454,9 +1464,9 @@ header .navbar .navbar__burger {
 
 .tracker__main__info {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20px 5% 0 5%;
-  height: 150px;
+  margin: 20px 4% 0 4%;
 }
 .tracker__main__info > div {
   align-items: center;
@@ -1466,6 +1476,8 @@ header .navbar .navbar__burger {
   box-shadow: #008ace 0px 1px 6px, #008ace 0px 1px 4px;
   border-radius: 10px;
   width: calc(25% - 30px);
+  min-width: 400px;
+  margin: 10px 5px;
 }
 .tracker__main__info h3 {
   font-size: 1.3rem;
@@ -1482,6 +1494,11 @@ header .navbar .navbar__burger {
   font-size: 1.3rem;
 }
 
+@media screen and (max-width: 900px) {
+  .tracker__main__info {
+    justify-content: center;
+  }
+}
 .tracker__main__info__account__avatar > img {
   width: 128px;
   height: 128px;
@@ -1594,6 +1611,12 @@ header .navbar .navbar__burger {
   font-size: 1.25rem;
 }
 
+@media screen and (max-width: 900px) {
+  .tracker__actual__season {
+    width: 400px;
+    margin: 0 0 20px 0;
+  }
+}
 .match__preview__Win {
   background-color: #249d59;
 }

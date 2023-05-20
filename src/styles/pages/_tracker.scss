@@ -48,10 +48,17 @@
   &__info{
     display: flex;
     flex-direction: row;
-    margin: 20px 5% 0 5%;
+    margin: 20px 4% 0 4%;
     & > div {
       width: 100%;
     }
   }
   
+}
+
+@media screen and (max-width: 900px) {
+  .tracker__info {
+    flex-direction: column;
+    align-items: center;
+  }
 }
