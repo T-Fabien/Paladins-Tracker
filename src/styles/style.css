@@ -1478,6 +1478,7 @@ header .navbar .navbar__burger {
   width: calc(25% - 30px);
   min-width: 400px;
   margin: 10px 5px;
+  padding: 8px 0;
 }
 .tracker__main__info h3 {
   font-size: 1.3rem;
@@ -1497,6 +1498,17 @@ header .navbar .navbar__burger {
 @media screen and (max-width: 900px) {
   .tracker__main__info {
     justify-content: center;
+  }
+}
+@media screen and (max-width: 425px) {
+  .tracker__main__info {
+    justify-content: center;
+  }
+  .tracker__main__info > div {
+    min-width: 95%;
+  }
+  .tracker__main__info > div p {
+    font-size: 0.85rem;
   }
 }
 .tracker__main__info__account__avatar > img {
@@ -1614,6 +1626,12 @@ header .navbar .navbar__burger {
 @media screen and (max-width: 900px) {
   .tracker__actual__season {
     width: 400px;
+    margin: 0 0 20px 0;
+  }
+}
+@media screen and (max-width: 425px) {
+  .tracker__actual__season {
+    width: 95%;
     margin: 0 0 20px 0;
   }
 }

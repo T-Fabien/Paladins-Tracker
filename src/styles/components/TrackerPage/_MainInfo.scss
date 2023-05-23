@@ -13,6 +13,7 @@
     width: calc(25% - 30px);
     min-width: 400px;
     margin: 10px 5px;
+    padding: 8px 0;
   }
   & h3{
     font-size: 1.3rem;
@@ -33,5 +34,17 @@
 @media screen and (max-width: 900px) {
   .tracker__main__info {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .tracker__main__info {
+    justify-content: center;
+    & > div {
+      min-width: 95%;
+      & p {
+        font-size: 0.85rem;
+      }
+    }
   }
 }
