@@ -12,36 +12,6 @@ type Props = {
 };
 
 function TrackerMainInfo({ player, championRank }: Props) {
-  const tierRank = [
-    "Unranked",
-    "Bronze V",
-    "Bronze IV",
-    "Bronze III",
-    "Bronze II",
-    "Bronze I",
-    "Silver V",
-    "Silver IV",
-    "Silver III",
-    "Silver II",
-    "Silver I",
-    "Gold V",
-    "Gold IV",
-    "Gold III",
-    "Gold II",
-    "Gold I",
-    "Platine V",
-    "Platine IV",
-    "Platine III",
-    "Platine II",
-    "Platine I",
-    "Diamant V",
-    "Diamant IV",
-    "Diamant III",
-    "Diamant II",
-    "Diamant I",
-    "Master",
-    "Grandmaster",
-  ];
 
   moment.locale("fr", {
     months:

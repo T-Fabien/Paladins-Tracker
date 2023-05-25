@@ -42,7 +42,7 @@ function Tracker() {
 
   useEffect(() => {
     if (location.pathname.substring(9)) {
-      handleSubmit(undefined);
+      testAndGetProfile(undefined);
     } else {
       setPlayer(undefined)
     }
@@ -89,13 +89,12 @@ function Tracker() {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = (event: any) => {
+  const testAndGetProfile = (event: any) => {
     if (event) {
       event.preventDefault();
     }
     if (
-      inputValue == location.pathname.substring(9) && !event ||
-      inputValue !== location.pathname.substring(9) && event
+      inputValue == location.pathname.substring(9) && !event
     ){
       setIsLoaded(false)
       // Load the Session
@@ -127,6 +126,13 @@ function Tracker() {
       navigate(`/tracker/${inputValue}`);
     }
   };
+
+  const profileRedirect = (event: any) => {
+    if (event) {
+      event.preventDefault();
+    }
+    window.location.href = `/tracker/${inputValue}`;
+  }
 
   const updateDataTable = (tableName: string, e :any) => {
 
@@ -178,7 +184,7 @@ function Tracker() {
   ) {
     return (
       <div className="tracker">
-        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+        <form className="tracker__form" action="" onSubmit={profileRedirect}>
           <label htmlFor="">
             <input
               className="tracker__form__search__input"
@@ -215,7 +221,7 @@ function Tracker() {
   } else if (player == "erreur") {
     return (
       <div className="tracker">
-        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+        <form className="tracker__form" action="" onSubmit={profileRedirect}>
           <label htmlFor="">
             <input
               className="tracker__form__search__input"
@@ -236,7 +242,7 @@ function Tracker() {
   } else if (isLoaded == false) {
     return (
       <div className="tracker">
-        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+        <form className="tracker__form" action="" onSubmit={profileRedirect}>
           <label htmlFor="">
             <input
               className="tracker__form__search__input"
@@ -260,7 +266,7 @@ function Tracker() {
   } else {
     return (
       <div className="tracker">
-        <form className="tracker__form" action="" onSubmit={handleSubmit}>
+        <form className="tracker__form" action="" onSubmit={profileRedirect}>
           <label htmlFor="">
             <input
               className="tracker__form__search__input"
