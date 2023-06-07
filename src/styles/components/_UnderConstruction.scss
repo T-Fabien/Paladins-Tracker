@@ -3,6 +3,7 @@
     justify-content: center;
     margin-top: 100px;
     & img {
-        width: 80vw;
+        max-width: 60vw;
+        max-height: 50vh;
     }
 }
