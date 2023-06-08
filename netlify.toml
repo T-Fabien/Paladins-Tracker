@@ -7,3 +7,8 @@
   from = "/*"
   to = "/"
   status = 200
+
+  [[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
