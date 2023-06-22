@@ -72,6 +72,10 @@ function AllChampionsPage() {
 
   // Champion Filter
   const updateFilter = (role: string, e: any) => {
+
+    var searchInput = document.getElementById("allchampion__search__input") as HTMLInputElement;
+    searchInput.value = ''
+
     document
       .getElementsByClassName("activeFilter")[0]
       .classList.remove("activeFilter");
@@ -134,6 +138,7 @@ function AllChampionsPage() {
             <input
               type="text"
               className="allchampion__page__filter__search__input"
+              id="allchampion__search__input"
               placeholder="Rechercher..."
               onChange={(e) => searchFilter(e.target.value)}
             />

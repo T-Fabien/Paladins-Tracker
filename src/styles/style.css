@@ -542,7 +542,7 @@ header .navbar .navbar__burger {
   width: 100%;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
   .tracker__info {
     flex-direction: column;
     align-items: center;
@@ -1677,6 +1677,12 @@ header .navbar .navbar__burger {
   font-size: 1.25rem;
 }
 
+@media screen and (max-width: 1200px) {
+  .tracker__actual__season {
+    width: 260px;
+    margin: 0 20px 0px 0;
+  }
+}
 @media screen and (max-width: 900px) {
   .tracker__actual__season {
     width: 400px;
@@ -1686,7 +1692,6 @@ header .navbar .navbar__burger {
 @media screen and (max-width: 425px) {
   .tracker__actual__season {
     width: 95%;
-    margin: 0 0 20px 0;
   }
 }
 .match__preview__Win {
